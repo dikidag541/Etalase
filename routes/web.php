@@ -26,7 +26,7 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
  */
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return redirect()->route('admin.cms');
     })->name('dashboard');
 
     // Admin CMS Routes

@@ -1,0 +1,90 @@
+/* Sovereign Studio - Administrative Utility Layer */
+
+:root {
+    --studio-bg: #0a0a0a;
+    --studio-card: #141414;
+    --studio-border: rgba(255, 255, 255, 0.05);
+    --studio-accent: #460008;
+    --studio-text: #e5e5e5;
+    --studio-muted: #737373;
+}
+
+.studio-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: calc(100vh - 80px);
+}
+
+.studio-sidebar {
+    background: var(--studio-bg);
+    border-right: 1px solid var(--studio-border);
+    padding: 2rem;
+}
+
+.studio-content {
+    background: #0f0f0f;
+    padding: 3rem;
+}
+
+.studio-card {
+    background: var(--studio-card);
+    border: 1px solid var(--studio-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.studio-card:hover {
+    border-color: rgba(212, 175, 55, 0.2);
+    background: #1a1a1a;
+}
+
+.studio-input {
+    width: 100%;
+    background: #050505;
+    border: 1px solid var(--studio-border);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    color: var(--studio-text);
+    font-size: 0.85rem;
+    transition: border-color 0.3s ease;
+}
+
+.studio-input:focus {
+    border-color: var(--studio-accent);
+    outline: none;
+}
+
+.studio-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--studio-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 700;
+}
+
+.studio-btn-primary {
+    background: var(--studio-accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+}
+
+.studio-btn-primary:hover {
+    filter: brightness(1.2);
+    transform: translateY(-1px);
+}
+
+.studio-stat-card {
+    background: linear-gradient(135deg, #141414 0%, #0a0a0a 100%);
+    border: 1px solid var(--studio-border);
+    padding: 1.5rem;
+    border-radius: 12px;
+}

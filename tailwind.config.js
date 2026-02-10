@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     './index.html',
     './resources/**/*.{js,jsx,ts,tsx}',
@@ -21,20 +22,20 @@ export default {
           900: '#0c3d66',
         },
         surface: {
-          DEFAULT: '#0a0a0a',
-          lighter: '#141414',
-          darker: '#050505',
+          DEFAULT: 'var(--studio-bg)',
+          lighter: 'var(--studio-card)',
+          darker: 'var(--studio-bg)',
         },
         gold: {
           500: '#d4af37',
         },
         'etalase-red': '#460008',
         text: {
-          main: '#e5e5e5',
-          muted: '#737373',
+          main: 'var(--studio-text)',
+          muted: 'var(--studio-muted)',
         },
         border: {
-          main: 'rgba(255, 255, 255, 0.05)',
+          main: 'var(--studio-border)',
         }
       },
       fontFamily: {

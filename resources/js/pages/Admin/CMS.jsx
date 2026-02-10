@@ -21,7 +21,7 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
     const stats = [
         { label: 'Total Articles', value: articles.length, color: 'text-etalase-red' },
         { label: 'Team Members', value: team.length, color: 'text-gold-500' },
-        { label: 'Gallery Pieces', value: gallery.length, color: 'text-white' },
+        { label: 'Gallery Pieces', value: gallery.length, color: 'text-black dark:text-white' },
         { label: 'Divisions', value: divisions.length, color: 'text-gold-500' },
         { label: 'Active Pages', value: pageTabs.length, color: 'text-etalase-red' }
     ];
@@ -31,14 +31,14 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
             <Head title="SOVEREIGN STUDIO | CMS" />
 
             {/* --- STUDIO HEADER --- */}
-            <div className="bg-black border-b border-white/5 py-12 px-12">
+            <div className="bg-surface-lighter border-b border-main py-12 px-12">
                 <div className="max-w-[1600px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
                     <div>
                         <div className="flex items-center gap-4 mb-2">
                             <span className="w-8 h-[1px] bg-etalase-red"></span>
                             <span className="text-[10px] tracking-[0.4em] uppercase text-text-muted font-bold">Studio Dashboard</span>
                         </div>
-                        <h1 className="text-5xl font-serif italic text-white tracking-tighter">Sovereign <span className="not-italic text-etalase-red">Studio</span></h1>
+                        <h1 className="text-5xl font-serif italic text-text-main tracking-tighter">Sovereign <span className="not-italic text-etalase-red">Studio</span></h1>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -62,7 +62,7 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
                                 <button
                                     key={page}
                                     onClick={() => { setActiveTab(page); setSelectedGroup('ALL'); }}
-                                    className={`w-full text-left px-6 py-4 rounded-lg text-[10px] tracking-widest uppercase font-black transition-all ${activeTab === page ? 'bg-etalase-red text-white shadow-lg shadow-etalase-red/20' : 'text-text-muted hover:bg-white/5 hover:text-white'}`}
+                                    className={`w-full text-left px-6 py-4 rounded-lg text-[10px] tracking-widest uppercase font-black transition-all ${activeTab === page ? 'bg-etalase-red text-white shadow-lg shadow-etalase-red/20' : 'text-text-muted hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white'}`}
                                 >
                                     {page} Page
                                 </button>
@@ -77,7 +77,7 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
                                 <button
                                     key={col.id}
                                     onClick={() => setActiveTab(col.id)}
-                                    className={`w-full text-left px-6 py-4 rounded-lg text-[10px] tracking-widest uppercase font-black transition-all ${activeTab === col.id ? 'bg-gold-500 text-black shadow-lg shadow-gold-500/20' : 'text-text-muted hover:bg-white/5 hover:text-white'}`}
+                                    className={`w-full text-left px-6 py-4 rounded-lg text-[10px] tracking-widest uppercase font-black transition-all ${activeTab === col.id ? 'bg-gold-500 text-black shadow-lg shadow-gold-500/20' : 'text-text-muted hover:bg-black/5 dark:hover:bg-white/5 hover:text-black dark:hover:text-white'}`}
                                 >
                                     {col.label}
                                 </button>
@@ -92,13 +92,13 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
                         {!isCollection && (
                             <>
                                 <div className="flex items-center justify-between mb-12">
-                                    <h2 className="text-3xl font-serif italic text-white capitalize">{activeTab} Framework</h2>
-                                    <div className="flex bg-black p-1 rounded-lg border border-white/10">
+                                    <h2 className="text-3xl font-serif italic text-text-main capitalize">{activeTab} Framework</h2>
+                                    <div className="flex bg-surface-lighter p-1 rounded-lg border border-main">
                                         {['ALL', ...new Set(settings[activeTab]?.map(s => s.group) || [])].map(group => (
                                             <button
                                                 key={group}
                                                 onClick={() => setSelectedGroup(group)}
-                                                className={`px-6 py-2 text-[8px] tracking-widest uppercase font-bold rounded-md transition-all ${selectedGroup === group ? 'bg-white/10 text-white' : 'text-text-muted hover:text-white'}`}
+                                                className={`px-6 py-2 text-[8px] tracking-widest uppercase font-bold rounded-md transition-all ${selectedGroup === group ? 'bg-etalase-red text-white shadow-lg shadow-etalase-red/20' : 'text-text-muted hover:text-text-main hover:bg-black/5 dark:hover:bg-white/5'}`}
                                             >
                                                 {group}
                                             </button>
@@ -169,7 +169,7 @@ function TeamManager({ members }) {
     return (
         <div className="space-y-8">
             <div className="flex justify-between items-center mb-12">
-                <h2 className="text-3xl font-serif italic text-white capitalize">Collective Identity</h2>
+                <h2 className="text-3xl font-serif italic text-text-main capitalize">Collective Identity</h2>
                 <button
                     onClick={() => { setShowAdd(true); setEditing(null); reset(); }}
                     className="studio-btn-primary"
@@ -220,14 +220,14 @@ function TeamManager({ members }) {
                             />
                             {errors.image && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.image}</p>}
                         </div>
-                        <div className="flex gap-4 pt-4 border-t border-white/5">
+                        <div className="flex gap-4 pt-4 border-t border-black/5 dark:border-white/5">
                             <button disabled={processing} className="studio-btn-primary">
                                 {editing ? 'Update Profile' : 'Confirm Accession'}
                             </button>
                             <button
                                 type="button"
                                 onClick={() => { setShowAdd(false); setEditing(null); reset(); }}
-                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-white transition-all"
+                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-black dark:hover:text-white transition-all"
                             >
                                 Cancel
                             </button>
@@ -239,11 +239,11 @@ function TeamManager({ members }) {
             <div className="space-y-4">
                 {members.map(member => (
                     <div key={member.id} className="studio-card flex items-center gap-8 group">
-                        <div className="w-16 h-16 bg-black rounded-lg overflow-hidden border border-white/5 flex-shrink-0">
+                        <div className="w-16 h-16 bg-black/5 dark:bg-black rounded-lg overflow-hidden border border-black/5 dark:border-white/5 flex-shrink-0">
                             <img src={member.image_url} className="w-full h-full object-cover" alt="" />
                         </div>
                         <div className="flex-grow">
-                            <h4 className="text-lg font-serif italic text-white">{member.name}</h4>
+                            <h4 className="text-lg font-serif italic text-text-main">{member.name}</h4>
                             <p className="text-[9px] tracking-[0.2em] text-etalase-red uppercase font-black">{member.role}</p>
                         </div>
                         <div className="flex gap-2">
@@ -253,7 +253,7 @@ function TeamManager({ members }) {
                                     setData({ name: member.name, role: member.role, order: member.order, image: null });
                                     setShowAdd(false);
                                 }}
-                                className="p-3 bg-white/5 hover:bg-white/10 rounded-md transition-all text-text-muted hover:text-white"
+                                className="p-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-md transition-all text-text-muted hover:text-black dark:hover:text-white"
                                 title="Edit"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
@@ -320,7 +320,7 @@ function DivisionManager({ divisions }) {
     return (
         <div className="space-y-8">
             <div className="flex justify-between items-center mb-12">
-                <h2 className="text-3xl font-serif italic text-white capitalize">Empire Divisions</h2>
+                <h2 className="text-3xl font-serif italic text-text-main capitalize">Empire Divisions</h2>
                 <button
                     onClick={() => { setShowAdd(true); setEditing(null); reset(); }}
                     className="studio-btn-primary"
@@ -383,14 +383,14 @@ function DivisionManager({ divisions }) {
                                 {errors.image && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.image}</p>}
                             </div>
                         </div>
-                        <div className="flex gap-4 pt-4 border-t border-white/5">
+                        <div className="flex gap-4 pt-4 border-t border-black/5 dark:border-white/5">
                             <button disabled={processing} className="studio-btn-primary">
                                 {editing ? 'Update Division' : 'Confirm Division'}
                             </button>
                             <button
                                 type="button"
                                 onClick={() => { setShowAdd(false); setEditing(null); reset(); }}
-                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-white transition-all"
+                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-black dark:hover:text-white transition-all"
                             >
                                 Cancel
                             </button>
@@ -402,13 +402,13 @@ function DivisionManager({ divisions }) {
             <div className="space-y-4">
                 {divisions.map(division => (
                     <div key={division.id} className="studio-card flex items-center gap-8 group">
-                        <div className="w-20 h-28 bg-black rounded-lg overflow-hidden border border-white/5 flex-shrink-0">
+                        <div className="w-20 h-28 bg-black/5 dark:bg-black rounded-lg overflow-hidden border border-black/5 dark:border-white/5 flex-shrink-0">
                             <img src={division.image_url} className="w-full h-full object-cover" alt="" />
                         </div>
                         <div className="flex-grow">
                             <div className="flex items-center gap-3">
                                 <span className="text-[10px] bg-etalase-red/20 text-etalase-red px-2 py-1 rounded font-black tracking-widest">{division.short_name}</span>
-                                <h4 className="text-2xl font-serif italic text-white">{division.title}</h4>
+                                <h4 className="text-2xl font-serif italic text-text-main">{division.title}</h4>
                             </div>
                             <p className="text-[8px] text-text-muted mt-2 uppercase tracking-widest">Order: {division.order}</p>
                         </div>
@@ -424,7 +424,7 @@ function DivisionManager({ divisions }) {
                                     });
                                     setShowAdd(false);
                                 }}
-                                className="p-3 bg-white/5 hover:bg-white/10 rounded-md transition-all text-text-muted hover:text-white"
+                                className="p-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-md transition-all text-text-muted hover:text-black dark:hover:text-white"
                                 title="Edit"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
@@ -481,7 +481,7 @@ function GalleryManager({ items }) {
     return (
         <div className="space-y-8">
             <div className="flex justify-between items-center mb-12">
-                <h2 className="text-3xl font-serif italic text-white capitalize">Visual Archive</h2>
+                <h2 className="text-3xl font-serif italic text-text-main capitalize">Visual Archive</h2>
                 <button
                     onClick={() => { setShowAdd(true); setEditing(null); reset(); }}
                     className="studio-btn-primary"
@@ -535,14 +535,14 @@ function GalleryManager({ items }) {
                             />
                             {errors.image && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.image}</p>}
                         </div>
-                        <div className="flex gap-4 pt-4 border-t border-white/5">
+                        <div className="flex gap-4 pt-4 border-t border-black/5 dark:border-white/5">
                             <button disabled={processing} className="studio-btn-primary">
                                 {editing ? 'Refine Asset' : 'Confirm Archive'}
                             </button>
                             <button
                                 type="button"
                                 onClick={() => { setShowAdd(false); setEditing(null); reset(); }}
-                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-white transition-all"
+                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-black dark:hover:text-white transition-all"
                             >
                                 Cancel
                             </button>
@@ -625,7 +625,7 @@ function ArticleManager({ articles }) {
     return (
         <div className="space-y-8">
             <div className="flex justify-between items-center mb-12">
-                <h2 className="text-3xl font-serif italic text-white capitalize">Manuscripts</h2>
+                <h2 className="text-3xl font-serif italic text-text-main capitalize">Manuscripts</h2>
                 <button
                     onClick={() => { setShowAdd(true); setEditing(null); reset(); }}
                     className="studio-btn-primary"
@@ -662,15 +662,41 @@ function ArticleManager({ articles }) {
                                 </select>
                             </div>
                         </div>
-                        <div>
-                            <label className="studio-label">Summary / Excerpt</label>
-                            <textarea
-                                value={data.excerpt}
-                                onChange={e => setData('excerpt', e.target.value)}
-                                className="studio-input h-24"
-                            />
-                            {errors.excerpt && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.excerpt}</p>}
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="studio-label">Summary / Excerpt</label>
+                                <textarea
+                                    value={data.excerpt}
+                                    onChange={e => setData('excerpt', e.target.value)}
+                                    className="studio-input h-24"
+                                    placeholder="Brief summary for the archive list..."
+                                />
+                                {errors.excerpt && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.excerpt}</p>}
+                            </div>
+                            <div>
+                                <label className="studio-label">Author Signature</label>
+                                <input
+                                    type="text"
+                                    value={data.author}
+                                    onChange={e => setData('author', e.target.value)}
+                                    className="studio-input"
+                                    placeholder="Redaksi Etalase"
+                                />
+                                {errors.author && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.author}</p>}
+                            </div>
                         </div>
+
+                        <div>
+                            <label className="studio-label">Manifest (Full Content)</label>
+                            <textarea
+                                value={data.content}
+                                onChange={e => setData('content', e.target.value)}
+                                className="studio-input h-64 font-serif leading-relaxed"
+                                placeholder="Write the full artistic manifest here..."
+                            />
+                            {errors.content && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.content}</p>}
+                        </div>
+
                         <div>
                             <label className="studio-label">Cover Asset</label>
                             <input
@@ -688,14 +714,14 @@ function ArticleManager({ articles }) {
                             />
                             {errors.image && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.image}</p>}
                         </div>
-                        <div className="flex gap-4 pt-4 border-t border-white/5">
+                        <div className="flex gap-4 pt-4 border-t border-black/5 dark:border-white/5">
                             <button disabled={processing} className="studio-btn-primary">
                                 {editing ? 'Update Manuscript' : 'Publish Manifest'}
                             </button>
                             <button
                                 type="button"
                                 onClick={() => { setShowAdd(false); setEditing(null); reset(); }}
-                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-white transition-all"
+                                className="px-8 py-3 text-[10px] uppercase font-black text-text-muted hover:text-black dark:hover:text-white transition-all"
                             >
                                 Withdraw
                             </button>
@@ -707,11 +733,11 @@ function ArticleManager({ articles }) {
             <div className="space-y-4">
                 {articles.map(article => (
                     <div key={article.id} className="studio-card flex items-center gap-8 group">
-                        <div className="w-20 h-20 bg-black rounded-lg overflow-hidden border border-white/5 flex-shrink-0">
+                        <div className="w-20 h-20 bg-black/5 dark:bg-black rounded-lg overflow-hidden border border-black/5 dark:border-white/5 flex-shrink-0">
                             <img src={article.image_url} className="w-full h-full object-cover" alt="" />
                         </div>
                         <div className="flex-grow">
-                            <h4 className="text-lg font-serif italic text-white">{article.title}</h4>
+                            <h4 className="text-lg font-serif italic text-text-main">{article.title}</h4>
                             <div className="flex gap-4 mt-1">
                                 <span className="text-[8px] text-etalase-red uppercase font-black tracking-widest">{article.category}</span>
                                 <span className="text-[8px] text-text-muted uppercase font-light tracking-widest">• {article.author}</span>
@@ -766,7 +792,7 @@ function CMSField({ setting }) {
             <div className="flex justify-between items-start gap-4 mb-6">
                 <div>
                     <span className="text-etalase-red text-[8px] tracking-[0.4em] uppercase font-black block mb-1">{setting.group}</span>
-                    <h3 className="text-lg text-white font-serif italic leading-tight">{setting.label}</h3>
+                    <h3 className="text-lg text-text-main font-serif italic leading-tight">{setting.label}</h3>
                 </div>
                 {recentlySuccessful ? (
                     <span className="text-green-500 text-[8px] font-black uppercase">✓ Saved</span>
@@ -784,7 +810,7 @@ function CMSField({ setting }) {
 
             <div className="flex-grow">
                 {setting.type === 'video' || setting.type === 'image' ? (
-                    <div className="relative group/asset rounded-lg bg-black/40 overflow-hidden aspect-video flex items-center justify-center border border-white/5">
+                    <div className="relative group/asset rounded-lg bg-surface-darker overflow-hidden aspect-video flex items-center justify-center border border-main">
                         {setting.type === 'image' ? (
                             <img src={setting.value} className="max-h-full object-contain" alt="Preview" />
                         ) : (

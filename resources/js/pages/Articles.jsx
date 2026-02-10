@@ -52,9 +52,9 @@ export default function Articles({ articles = [] }) {
                                 {/* Text Part */}
                                 <div className="lg:w-2/5 space-y-12">
                                     <div className="flex gap-12 text-[10px] tracking-[0.5em] uppercase font-black text-gold-500">
-                                        <span>{article.date}</span>
+                                        <span>{new Date(article.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                                         <span>•</span>
-                                        <span>{article.author}</span>
+                                        <span>{article.author || 'Redaksi Etalase'}</span>
                                     </div>
                                     <h2 className="font-serif text-5xl md:text-7xl text-text-main italic tracking-tighter uppercase leading-none">
                                         {article.title}

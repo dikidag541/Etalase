@@ -1,6 +1,15 @@
 /* Sovereign Studio - Administrative Utility Layer */
 
 :root {
+    --studio-bg: #fcfbf9;
+    --studio-card: #ffffff;
+    --studio-border: rgba(0, 0, 0, 0.08);
+    --studio-accent: #460008;
+    --studio-text: #1a1a1a;
+    --studio-muted: #737373;
+}
+
+.dark {
     --studio-bg: #0a0a0a;
     --studio-card: #141414;
     --studio-border: rgba(255, 255, 255, 0.05);
@@ -22,7 +31,8 @@
 }
 
 .studio-content {
-    background: #0f0f0f;
+    background: var(--studio-bg);
+    filter: brightness(0.98);
     padding: 3rem;
 }
 
@@ -35,13 +45,15 @@
 }
 
 .studio-card:hover {
-    border-color: rgba(212, 175, 55, 0.2);
-    background: #1a1a1a;
+    border-color: rgba(212, 175, 55, 0.4);
+    background: var(--studio-card);
+    filter: contrast(1.02);
 }
 
 .studio-input {
     width: 100%;
-    background: #050505;
+    background: var(--studio-bg);
+    filter: brightness(0.95);
     border: 1px solid var(--studio-border);
     border-radius: 4px;
     padding: 0.75rem 1rem;
@@ -83,8 +95,9 @@
 }
 
 .studio-stat-card {
-    background: linear-gradient(135deg, #141414 0%, #0a0a0a 100%);
+    background: var(--studio-card);
     border: 1px solid var(--studio-border);
     padding: 1.5rem;
     border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }

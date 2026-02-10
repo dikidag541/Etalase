@@ -25,7 +25,7 @@ export default function Login() {
                 {/* Branding */}
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center justify-center w-20 h-20 rounded-full border border-gold-500/20 bg-black/50 backdrop-blur-xl mb-8">
-                        <img src="/images/Logo Etalase.png" className="w-10 h-10 object-contain" alt="Logo" />
+                        <img src="/images/Logo UKMK Etalase.png" className="w-10 h-10 object-contain" alt="Logo" />
                     </div>
                     <h1 className="text-3xl font-serif italic tracking-tighter mb-2">Sovereign <span className="not-italic text-gold-500">Access</span></h1>
                     <p className="text-[10px] tracking-[0.5em] uppercase text-white/30 font-black">Authentication Protocol</p>

@@ -55,7 +55,7 @@ export default function DashboardLayout({ children }) {
           {/* Left: Branding */}
           <Link href="/" className="flex items-center gap-3 group/logo">
             <div className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-500 ${isDarkMode ? 'border-gold-500/50 bg-black/40 group-hover/logo:border-gold-500' : 'border-black/10 bg-white group-hover/logo:border-black'}`}>
-              <img src="/images/Logo Etalase.png" className="w-5 h-5 object-contain" alt="Logo" />
+              <img src="/images/Logo UKMK Etalase.png" className="w-5 h-5 object-contain" alt="Logo" />
             </div>
             <div className="flex flex-col leading-none">
               <span className={`text-[10px] font-black tracking-[0.2em] uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>Dashboard</span>

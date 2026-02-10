@@ -5,6 +5,9 @@ export default function MainLayout({ children, auth }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
 
+  const [lang, setLang] = useState('ID');
+  const [showLangDropdown, setShowLangDropdown] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -54,7 +57,7 @@ export default function MainLayout({ children, auth }) {
           {/* Left: Branding */}
           <Link href="/" className="flex items-center gap-3 group/logo">
             <div className={`w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-500 ${isDarkMode ? 'border-gold-500/50 bg-black/40 group-hover/logo:border-gold-500' : 'border-black/10 bg-white group-hover/logo:border-black'}`}>
-              <img src="/images/Logo Etalase.png" className="w-5 h-5 object-contain" alt="Logo" />
+              <img src="/images/Logo UKMK Etalase.png" className="w-5 h-5 object-contain" alt="Logo" />
             </div>
             <div className="flex flex-col leading-none">
               <span className={`text-[10px] font-black tracking-[0.2em] uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>UKMK</span>
@@ -74,13 +77,43 @@ export default function MainLayout({ children, auth }) {
           {/* Right: Actions */}
           <div className="flex items-center gap-6">
 
-            {/* Language Selector (UI only) */}
-            <div className={`hidden md:flex items-center gap-2 cursor-pointer group/lang ${isDarkMode ? 'text-white/60' : 'text-black/60'}`}>
-              <div className="w-4 h-3 bg-red-600 relative overflow-hidden rounded-[1px]">
-                <div className="absolute top-1/2 left-0 w-full h-1/2 bg-white"></div>
+            {/* Language Selector (Functional) */}
+            <div className="relative">
+              <div
+                onClick={() => setShowLangDropdown(!showLangDropdown)}
+                className={`hidden md:flex items-center gap-2 cursor-pointer group/lang transition-all duration-300 ${isDarkMode ? 'text-white/60' : 'text-black/60'} hover:text-gold-500`}
+              >
+                <div className="w-4 h-3 bg-red-600 relative overflow-hidden rounded-[1px]">
+                  {lang === 'ID' ? (
+                    <div className="absolute top-1/2 left-0 w-full h-1/2 bg-white"></div>
+                  ) : (
+                    <div className="w-full h-full bg-blue-900 flex flex-col">
+                      <div className="flex h-1/2">
+                        <div className="w-1/2 bg-white"></div>
+                        <div className="w-1/2 bg-red-600"></div>
+                      </div>
+                      <div className="h-1/2 bg-white"></div>
+                    </div>
+                  )}
+                </div>
+                <span className="text-[9px] font-black tracking-widest uppercase">{lang}</span>
+                <svg className={`w-3 h-3 transition-transform duration-300 ${showLangDropdown ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
               </div>
-              <span className="text-[9px] font-black tracking-widest uppercase group-hover/lang:text-gold-500 transition-colors">ID</span>
-              <svg className="w-3 h-3 group-hover/lang:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
+
+              {/* Dropdown Menu */}
+              {showLangDropdown && (
+                <div className={`absolute top-full mt-4 right-0 w-32 py-2 rounded-2xl border backdrop-blur-3xl animate-in fade-in zoom-in duration-300 ${isDarkMode ? 'bg-black/90 border-white/10' : 'bg-white/90 border-black/5'}`}>
+                  {['ID', 'EN'].map((l) => (
+                    <button
+                      key={l}
+                      onClick={() => { setLang(l); setShowLangDropdown(false); }}
+                      className={`w-full text-left px-6 py-2 text-[10px] font-black tracking-widest uppercase transition-colors ${lang === l ? 'text-gold-500' : isDarkMode ? 'text-white/40 hover:text-white' : 'text-black/40 hover:text-black'}`}
+                    >
+                      {l === 'ID' ? 'Bahasa' : 'English'}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Icons Divider */}
@@ -98,15 +131,6 @@ export default function MainLayout({ children, auth }) {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>
                 )}
               </button>
-
-              {/* Profile Circle */}
-              <Link href={auth?.user ? "/dashboard" : "/login"} className={`w-10 h-10 rounded-full flex items-center justify-center border-2 overflow-hidden transition-all duration-500 ${isDarkMode ? 'border-white/10 bg-white/5 hover:border-gold-500' : 'border-black/5 bg-black/5 hover:border-black'}`}>
-                {auth?.user ? (
-                  <div className="w-full h-full flex items-center justify-center font-black text-xs uppercase text-gold-500">{auth.user.name.charAt(0)}</div>
-                ) : (
-                  <svg className={`w-5 h-5 ${isDarkMode ? 'text-white/40' : 'text-black/40'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                )}
-              </Link>
             </div>
           </div>
         </div>
@@ -132,7 +156,7 @@ export default function MainLayout({ children, auth }) {
             <div className="lg:col-span-6">
               <Link href="/" className="inline-flex items-center gap-10 mb-20 group/footer-logo">
                 <div className={`w-28 h-28 border-2 rounded-full flex items-center justify-center transition-all duration-1000 ${isDarkMode ? 'border-gold-500/10 group-hover/footer-logo:border-gold-500 bg-black/40 shadow-[0_0_50px_rgba(212,175,55,0.1)]' : 'border-black/5 group-hover/footer-logo:border-black bg-white shadow-xl'}`}>
-                  <img src="/images/Logo Etalase.png" className="w-14 h-14 object-contain opacity-60 group-hover/footer-logo:opacity-100 group-hover/footer-logo:scale-125 transition-all duration-700" alt="Footer Logo" />
+                  <img src="/images/Logo UKMK Etalase.png" className="w-14 h-14 object-contain opacity-60 group-hover/footer-logo:opacity-100 group-hover/footer-logo:scale-125 transition-all duration-700" alt="Footer Logo" />
                 </div>
                 <div className="flex flex-col">
                   <span className={`text-[14px] font-black tracking-[0.6em] uppercase mb-2 ${isDarkMode ? 'text-white/30' : 'text-black/30'}`}>UKMK KESENIAN</span>

@@ -39,7 +39,7 @@
 
   .text-texture-grand {
     @apply bg-clip-text text-transparent bg-center bg-cover;
-    background-image: url('/images/Salinan Ave 4 cymk.jpg');
+    background-image: url('/images/Salinan Ave 4 cymk.webp');
     background-size: cover;
     /* Optional: Add a subtle animation or filter if needed, but keeping it simple for now as per request */
     filter: brightness(1.2) contrast(1.1);
@@ -47,7 +47,7 @@
 
   .text-texture-gold {
     @apply bg-clip-text text-transparent bg-center bg-cover;
-    background-image: url('/images/Salinan Ave 4 cymk.jpg');
+    background-image: url('/images/Salinan Ave 4 cymk.webp');
     background-position: center 40%;
     background-size: cover;
     filter: brightness(1.2) contrast(1.1);

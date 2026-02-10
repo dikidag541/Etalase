@@ -35,7 +35,7 @@ export default function About({ cms = {} }) {
                 <div
                     className="absolute inset-0 z-0 opacity-40 bg-fixed bg-cover bg-center"
                     style={{
-                        backgroundImage: "url('/images/Salinan Ave 4 cymk.jpg')",
+                        backgroundImage: "url('/images/Salinan Ave 4 cymk.webp')",
                         transform: `scale(${1 + scrollY * 0.0001})`
                     }}
                 ></div>

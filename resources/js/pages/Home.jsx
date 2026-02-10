@@ -65,7 +65,7 @@ export default function Home({ cms = {}, divisions = [] }) {
           style={{ transform: `translateY(${-scrollY * 0.1}px) rotate(-8deg)` }}
         >
           <div className="w-[400px] h-[550px] ornamental-border p-3 bg-surface/5 backdrop-blur-2xl shadow-[0_50px_100px_rgba(0,0,0,0.8)] group transition-transform duration-[1.5s] hover:rotate-0">
-            <img src="/images/Salinan Ave 4 cymk.jpg" className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2s]" alt="Sovereign Detail 1" />
+            <img src="/images/Salinan Ave 4 cymk.webp" className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2s]" alt="Sovereign Detail 1" />
           </div>
         </div>
 
@@ -182,9 +182,9 @@ export default function Home({ cms = {}, divisions = [] }) {
           {/* Right: The Parade (Staggered Images) */}
           <div className="lg:col-span-7 grid grid-cols-2 gap-12 pt-24 lg:pt-32">
             {[
-              { src: cms.parade_image_1 || '/images/Salinan Ave 4 cymk.jpg', delay: '0', speed: 0.1 },
+              { src: cms.parade_image_1 || '/images/Salinan Ave 4 cymk.webp', delay: '0', speed: 0.1 },
               { src: cms.parade_image_2 || '/images/IMG_6046 (1).JPG', delay: '300ms', speed: 0.02, margin: 'mt-64' },
-              { src: cms.parade_image_3 || '/images/Salinan Ave 4 cymk.jpg', delay: '500ms', speed: 0.05, margin: '-mt-32' },
+              { src: cms.parade_image_3 || '/images/Salinan Ave 4 cymk.webp', delay: '500ms', speed: 0.05, margin: '-mt-32' },
               { src: cms.parade_image_4 || '/images/IMG_6046 (1).JPG', delay: '700ms', speed: 0.15, margin: 'mt-24' }
             ].map((item, idx) => (
               <div

@@ -63,13 +63,9 @@ export default function DashboardLayout({ children }) {
             </div>
           </Link>
 
-          {/* Center: Corrected Navigation Links */}
-          <div className={`hidden lg:flex items-center gap-10 text-[10px] font-black tracking-[0.25em] uppercase ${isDarkMode ? 'text-white/60' : 'text-black/60'}`}>
-            <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
-            <Link href="/about" className="hover:text-gold-500 transition-colors">About</Link>
-            <Link href="/articles" className="hover:text-gold-500 transition-colors">Articles</Link>
-            <Link href="/gallery" className="hover:text-gold-500 transition-colors">Gallery</Link>
-            <Link href="/team" className="hover:text-gold-500 transition-colors">Pengurus</Link>
+          {/* Center: Essential Dashboard Info (Optional) */}
+          <div className={`hidden lg:flex items-center gap-10 text-[9px] font-black tracking-[0.4em] uppercase ${isDarkMode ? 'text-white/20' : 'text-black/20'}`}>
+            System Protocol Active
           </div>
 
           {/* Right Actions */}

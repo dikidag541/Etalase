@@ -13,8 +13,11 @@ class HomeController extends Controller
             ->get()
             ->pluck('value', 'key');
 
+        $divisions = \App\Models\Division::orderBy('order')->get();
+
         return Inertia::render('Home', [
-            'cms' => $cms
+            'cms' => $cms,
+            'divisions' => $divisions
         ]);
     }
 

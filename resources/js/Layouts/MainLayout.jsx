@@ -118,70 +118,81 @@ export default function MainLayout({ children, auth }) {
       </main>
 
       {/* Footer: Editorial Grand Footer */}
-      <footer className={`border-t relative overflow-hidden pt-32 pb-16 transition-colors duration-500 bg-surface border-border-main`}>
-        <div className="absolute inset-0 gold-leaf-texture opacity-[0.02]"></div>
+      <footer className={`relative overflow-hidden pt-60 pb-20 transition-colors duration-700 bg-surface border-t border-border-main`}>
+        {/* Cinematic Backdrop */}
+        <div className="absolute inset-0 gold-leaf-texture opacity-[0.05] pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-black/[0.02] to-black/[0.05] pointer-events-none"></div>
+
+        {/* Monumental Branding Seal */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500 rounded-full opacity-[0.02] blur-[150px] pointer-events-none"></div>
 
         <div className="mx-auto max-w-[1700px] px-6 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-24 mb-32">
+          <div className="grid lg:grid-cols-12 gap-32 mb-48">
             {/* Branding & Manifesto */}
-            <div className="lg:col-span-5">
-              <Link href="/" className="flex items-center gap-6 mb-12 group/footer-logo">
-                <div className={`w-16 h-16 border rounded-full flex items-center justify-center transition-all duration-700 ${isDarkMode ? 'border-gold-500/30 group-hover/footer-logo:border-gold-500' : 'border-black/10 group-hover/footer-logo:border-black'}`}>
-                  <span className="text-gold-500 font-serif italic text-3xl">E</span>
+            <div className="lg:col-span-6">
+              <Link href="/" className="inline-flex items-center gap-10 mb-20 group/footer-logo">
+                <div className={`w-28 h-28 border-2 rounded-full flex items-center justify-center transition-all duration-1000 ${isDarkMode ? 'border-gold-500/10 group-hover/footer-logo:border-gold-500 bg-black/40 shadow-[0_0_50px_rgba(212,175,55,0.1)]' : 'border-black/5 group-hover/footer-logo:border-black bg-white shadow-xl'}`}>
+                  <img src="/images/Logo Etalase.png" className="w-14 h-14 object-contain opacity-60 group-hover/footer-logo:opacity-100 group-hover/footer-logo:scale-125 transition-all duration-700" alt="Footer Logo" />
                 </div>
-                <span className={`text-3xl font-black tracking-[0.4em] uppercase ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                  UKM<span className="metallic-gold">ETALASE</span>
-                </span>
+                <div className="flex flex-col">
+                  <span className={`text-[14px] font-black tracking-[0.6em] uppercase mb-2 ${isDarkMode ? 'text-white/30' : 'text-black/30'}`}>UKMK KESENIAN</span>
+                  <span className="text-5xl md:text-6xl font-black tracking-[0.3em] uppercase metallic-gold drop-shadow-2xl">ETALASE</span>
+                </div>
               </Link>
-              <p className={`text-xl font-light leading-relaxed mb-12 max-w-md italic ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>
-                "Sebuah wahana transformasi di mana kesenian tradisional bertemu dengan ambisi futuristik. Melampaui imajinasi rupa dan raga."
-              </p>
-              <div className="flex gap-8">
+              <div className="max-w-2xl relative">
+                <span className="absolute -left-12 top-0 text-7xl font-serif text-gold-500/20 italic">"</span>
+                <p className={`text-2xl md:text-3xl font-light leading-snug mb-20 italic tracking-tight ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>
+                  Sebuah wahana transformasi di mana kesenian tradisional bertemu dengan ambisi futuristik. Kita tidak hanya melintas, <span className="text-text-main font-medium">kita meninggalkan jejak rupa yang abadi.</span>
+                </p>
+              </div>
+              <div className="flex items-center gap-16">
                 {['INSTAGRAM', 'YOUTUBE', 'TIKTOK'].map(social => (
-                  <a key={social} href="#" className={`text-[10px] font-black tracking-[0.3em] uppercase transition-colors ${isDarkMode ? 'text-gold-500/50 hover:text-gold-500' : 'text-black/40 hover:text-black'}`}>
+                  <a key={social} href="#" className={`text-[11px] font-black tracking-[0.5em] uppercase transition-all hover:-translate-y-2 hover:text-gold-500 ${isDarkMode ? 'text-white/20' : 'text-black/20'}`}>
                     {social}
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Navigation Grid */}
-            <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-16">
-              <div>
-                <h4 className={`text-[10px] font-black uppercase tracking-[0.5em] mb-10 border-b pb-4 inline-block ${isDarkMode ? 'text-white border-etalase-red/30' : 'text-black border-etalase-red/10'}`}>Ekosistem</h4>
-                <ul className="space-y-6">
+            {/* Navigation Grid - Asymmetric */}
+            <div className="lg:col-span-6 grid grid-cols-2 gap-20">
+              <div className="pt-10">
+                <h4 className={`text-[12px] font-black uppercase tracking-[0.8em] mb-16 flex items-center gap-6 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+                  EKOSISTEM
+                </h4>
+                <ul className="space-y-8">
                   {['Galeri Masterpiece', 'Editorial Seni', 'Kolektif Kreatif', 'Arsip Digital'].map(item => (
-                    <li key={item}><Link href="#" className={`text-sm hover:text-gold-500 transition-colors font-light ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>{item}</Link></li>
+                    <li key={item}><Link href="#" className={`text-lg md:text-xl hover:text-gold-500 transition-all font-light tracking-tight hover:pl-4 ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>{item}</Link></li>
                   ))}
                 </ul>
               </div>
-              <div>
-                <h4 className={`text-[10px] font-black uppercase tracking-[0.5em] mb-10 border-b pb-4 inline-block ${isDarkMode ? 'text-white border-etalase-red/30' : 'text-black border-etalase-red/10'}`}>Organisasi</h4>
-                <ul className="space-y-6">
-                  {['Tentang Etalase', 'Struktur Pengurus', 'Visi & Misi', 'Hubungi Kami'].map(item => (
-                    <li key={item}><Link href="#" className={`text-sm hover:text-gold-500 transition-colors font-light ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>{item}</Link></li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-span-2 md:col-span-1">
-                <h4 className={`text-[10px] font-black uppercase tracking-[0.5em] mb-10 border-b pb-4 inline-block ${isDarkMode ? 'text-white border-etalase-red/30' : 'text-black border-etalase-red/10'}`}>Milis Sovereign</h4>
-                <p className={`text-xs mb-8 font-light leading-relaxed ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>Dapatkan update eksklusif mengenai parade dan instalasi seni terbaru kami.</p>
-                <div className="flex">
-                  <input type="text" placeholder="Your Email" className={`border px-6 py-4 text-xs tracking-widest focus:outline-none focus:border-gold-500 transition-all w-full ${isDarkMode ? 'bg-white/5 border-white/10 text-white' : 'bg-white/50 border-black/10 text-black'}`} />
-                  <button className="bg-gold-500 text-black px-6 py-4 font-black text-[10px] uppercase hover:bg-gold-400 transition-colors">Join</button>
+              <div className="bg-gold-500/[0.02] p-12 rounded-3xl border border-white/[0.05]">
+                <h4 className={`text-[12px] font-black uppercase tracking-[0.8em] mb-16 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+                  MILIS SOVEREIGN
+                </h4>
+                <p className={`text-lg mb-12 font-light leading-relaxed tracking-tight ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>Bergabunglah dalam lingkaran eksklusif kurasi seni dan budaya kami.</p>
+                <div className="relative group/input mt-auto">
+                  <input
+                    type="text"
+                    placeholder="Signature E-mail"
+                    className={`w-full border-b-2 py-6 bg-transparent text-xl tracking-tighter focus:outline-none transition-all ${isDarkMode ? 'border-white/10 text-white focus:border-gold-500' : 'border-black/10 text-black focus:border-black'}`}
+                  />
+                  <button className="absolute right-0 top-1/2 -translate-y-1/2 text-[12px] font-black uppercase tracking-[0.5em] metallic-gold group-hover/input:translate-x-2 transition-all">Join</button>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Bottom Copyright */}
-          <div className={`pt-16 border-t flex flex-col md:flex-row justify-between items-center gap-8 border-border-main`}>
-            <span className={`text-[10px] font-bold tracking-[0.5em] uppercase ${isDarkMode ? 'text-white/20' : 'text-black/20'}`}>
-              &copy; 2026 UKM KESENIAN ETALASE. ALL RIGHTS RESERVED.
+          <div className={`pt-16 border-t flex flex-col md:flex-row justify-between items-center gap-12 ${isDarkMode ? 'border-white/5' : 'border-black/5'}`}>
+            <span className={`text-[11px] font-black tracking-[0.8em] uppercase ${isDarkMode ? 'text-white/10' : 'text-black/10'}`}>
+              &copy; 2026 UKM KESENIAN ETALASE // PRESERVE THE CRAFT
             </span>
-            <span className={`text-[10px] font-bold tracking-[0.5em] uppercase ${isDarkMode ? 'text-white/20' : 'text-black/20'}`}>
-              SOVEREIGN STUDIO // JEMBER
-            </span>
+            <div className="flex items-center gap-16">
+              <span className={`text-[11px] font-black tracking-[0.8em] uppercase ${isDarkMode ? 'text-white/10' : 'text-black/10'}`}>
+                SOVEREIGN STUDIO // DESIGNED FOR THE BOLD
+              </span>
+            </div>
           </div>
         </div>
       </footer>

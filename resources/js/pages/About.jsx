@@ -102,8 +102,8 @@ export default function About({ cms = {} }) {
             {/* --- FINAL: THE CALL --- */}
             <section className="py-96 bg-surface flex flex-col items-center justify-center text-center transition-colors duration-500">
                 <div className="reveal max-w-4xl px-8">
-                    <h3 className="font-serif text-6xl md:text-8xl text-text-main italic mb-20 italic">
-                        "Jadilah bagian dari revolusi rupa dan raga di panggung Etalase."
+                    <h3 className="font-serif text-6xl md:text-8xl text-text-main italic mb-20">
+                        "{cms.about_quote || 'Jadilah bagian dari revolusi rupa dan raga di panggung Etalase.'}"
                     </h3>
                     <div className="flex flex-col sm:flex-row gap-12 justify-center mt-20">
                         <button className="px-16 py-6 bg-gold-500 text-black font-black text-xs tracking-[1em] uppercase hover:bg-white transition-all transform hover:scale-105 duration-500">

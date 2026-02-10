@@ -9,8 +9,13 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
 
     // Page tabs
     const pageTabs = Object.keys(settings);
-    const collectionTabs = ['members', 'articles', 'gallery', 'divisions'];
-    const isCollection = collectionTabs.includes(activeTab);
+    const collectionTabs = [
+        { id: 'members', label: 'Collective Members' },
+        { id: 'articles', label: 'Manuscripts' },
+        { id: 'gallery', label: 'Masterpiece Archive' },
+        { id: 'faset', label: 'Faset Kesenian' }
+    ];
+    const isCollection = collectionTabs.some(t => t.id === activeTab);
 
     // Stats
     const stats = [
@@ -70,11 +75,11 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
                         <div className="space-y-1">
                             {collectionTabs.map(col => (
                                 <button
-                                    key={col}
-                                    onClick={() => setActiveTab(col)}
-                                    className={`w-full text-left px-6 py-4 rounded-lg text-[10px] tracking-widest uppercase font-black transition-all ${activeTab === col ? 'bg-gold-500 text-black shadow-lg shadow-gold-500/20' : 'text-text-muted hover:bg-white/5 hover:text-white'}`}
+                                    key={col.id}
+                                    onClick={() => setActiveTab(col.id)}
+                                    className={`w-full text-left px-6 py-4 rounded-lg text-[10px] tracking-widest uppercase font-black transition-all ${activeTab === col.id ? 'bg-gold-500 text-black shadow-lg shadow-gold-500/20' : 'text-text-muted hover:bg-white/5 hover:text-white'}`}
                                 >
-                                    {col}
+                                    {col.label}
                                 </button>
                             ))}
                         </div>
@@ -111,7 +116,7 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
                         {activeTab === 'members' && <TeamManager members={team} />}
                         {activeTab === 'articles' && <ArticleManager articles={articles} />}
                         {activeTab === 'gallery' && <GalleryManager items={gallery} />}
-                        {activeTab === 'divisions' && <DivisionManager divisions={divisions} />}
+                        {activeTab === 'faset' && <DivisionManager divisions={divisions} />}
                     </div>
                 </main>
             </div>
@@ -301,7 +306,7 @@ function DivisionManager({ divisions }) {
 
     const deleteItem = (id) => {
         if (confirm('Delete this division?')) {
-            deleteForm.delete(`/admin/divisions/${id}`, {
+            deleteForm.delete(route('admin.divisions.destroy', id), {
                 onSuccess: () => {
                     // Success is handled by page reload/flash message
                 },

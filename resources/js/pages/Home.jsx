@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Head, Link } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout'
 
-export default function Home({ cms = {} }) {
+export default function Home({ cms = {}, divisions = [] }) {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -34,9 +34,11 @@ export default function Home({ cms = {} }) {
       <div className="fixed inset-0 pointer-events-none gold-leaf-texture opacity-[0.02] z-[998]"></div>
 
       {/* --- HERO SECTION: CINEMATIC MASTERPIECE --- */}
-      <section className="section-stack-pin z-[10] bg-surface">
+      {/* --- HERO SECTION: CINEMATIC MASTERPIECE --- */}
+      <section className="relative min-h-[120vh] bg-surface z-[10]">
         {/* Top Edge Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-blue opacity-50 z-20 pointer-events-none"></div>
+
         {/* Background Media & Overlays */}
         <div className="absolute inset-0 z-0">
           <video
@@ -77,169 +79,143 @@ export default function Home({ cms = {} }) {
         </div>
 
         {/* Main Content: Monumental Typography */}
-        {/* Main Content: OVERSIZED DYNAMIC SCROLL TYPOGRAPHY */}
-        <div className="relative z-10 w-full h-[150vh] flex flex-col justify-end items-center overflow-hidden pb-[20vh]">
+        <div className="relative z-10 w-full min-h-screen flex flex-col justify-end items-center pb-[4vh]">
 
-          {/* Layer 1: UKMK (Moves Right) */}
+          {/* Layer 1: UKMK */}
           <div
             className="w-full flex justify-start pl-[5vw]"
-            style={{ transform: `translateX(${scrollY * 0.4}px)` }}
+            style={{ transform: `translateX(${scrollY * 0.3}px)` }}
           >
             {/* Huge Solid Text - Prismatic Gradient */}
             <span className="font-playfair italic text-texture-grand text-[18vw] leading-[0.8] tracking-tighter select-none block whitespace-nowrap drop-shadow-2xl pr-4">
-              UKMK
+              {cms.hero_title_1 || 'UKMK'}
             </span>
             {/* Ghost Outline Text */}
             <span className="absolute top-0 left-0 pl-[5vw] font-playfair italic text-outline text-[18vw] leading-[0.8] tracking-tighter select-none block whitespace-nowrap opacity-30 mix-blend-overlay"
-              style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-              UKMK
+              style={{ transform: `translateY(${scrollY * 0.05}px)` }}>
+              {cms.hero_title_1 || 'UKMK'}
             </span>
           </div>
 
-          {/* Layer 2: ETALASE (Moves Left) */}
+          {/* Layer 2: ETALASE */}
           <div
             className="w-full flex justify-end pr-[5vw] -mt-[4vw]"
-            style={{ transform: `translateX(${-scrollY * 0.4}px)` }}
+            style={{ transform: `translateX(${-scrollY * 0.3}px)` }}
           >
             {/* Huge Solid Text - Prismatic Gradient */}
-            <span className="font-playfair italic text-texture-gold text-[18vw] leading-[0.8] tracking-tight select-none block whitespace-nowrap drop-shadow-2xl pr-4">
-              Etalase
+            <span className="font-playfair italic metallic-gold text-[18vw] leading-[0.8] tracking-tight select-none block whitespace-nowrap drop-shadow-2xl pr-4">
+              {cms.hero_title_2 || 'Etalase'}
             </span>
             {/* Ghost Outline Text */}
             <span className="absolute top-0 right-0 pr-[5vw] font-playfair italic text-outline text-[18vw] leading-[0.8] tracking-tight select-none block whitespace-nowrap opacity-30 mix-blend-overlay"
-              style={{ transform: `translateY(${-scrollY * 0.15}px)` }}>
-              Etalase
+              style={{ transform: `translateY(${-scrollY * 0.08}px)` }}>
+              {cms.hero_title_2 || 'Etalase'}
             </span>
           </div>
 
-          {/* Narrative Touch: Manifesto Reveal */}
-          <div className="absolute top-20 left-1/2 -translate-x-1/2 text-center mix-blend-difference">
-            <p className="text-white text-xs md:text-sm font-bold tracking-[0.5em] uppercase opacity-60"
-              style={{ opacity: Math.min(1, scrollY * 0.005) }}
-            >
-              Sebuah wahana transformasi
+          {/* Manifesto & CTA Section */}
+          <div className="mt-24 flex flex-col items-center gap-12 reveal relative z-20">
+            <p className="text-white text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase opacity-40 mix-blend-difference">
+              {cms.hero_subtitle || 'Sebuah wahana transformasi'}
             </p>
+            <Link
+              href="/gallery"
+              className="group relative px-20 py-7 bg-white text-black font-black uppercase text-[10px] tracking-[0.6em] transition-all hover:scale-105 shadow-2xl overflow-hidden"
+            >
+              <span className="relative z-10">Expand Vision</span>
+              <div className="absolute inset-0 bg-gold-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            </Link>
           </div>
         </div>
 
-        <div className="mt-28 flex flex-col sm:flex-row gap-16 justify-center items-center reveal delay-1k">
-          <Link
-            href="/gallery"
-            className="group relative px-28 py-10 bg-white text-black font-black uppercase text-[12px] tracking-[0.8em] transition-all hover:bg-gold-500 hover:text-white hover:scale-110 active:scale-95 shadow-2xl"
-          >
-            <span className="relative z-10">Expand Vision</span>
-            <div className="absolute inset-0 bg-gold-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
-          </Link>
-        </div>
-
-        {/* Dynamic Background Glyph (Horizontal Scroll) */}
+        {/* Dynamic Background Glyph */}
         <div
-          className="absolute top-1/2 left-0 whitespace-nowrap text-[30vw] font-black text-white/[0.04] select-none italic leading-none pointer-events-none uppercase"
-          style={{ transform: `translateX(${-scrollY * 0.4}px) translateY(-50%)` }}
+          className="absolute top-1/2 left-0 whitespace-nowrap text-[35vw] font-black text-white/[0.015] select-none italic leading-none pointer-events-none uppercase z-0"
+          style={{ transform: `translateX(${-scrollY * 0.1}px) translateY(-50%)` }}
         >
-          SOVEREIGN SOVEREIGN SOVEREIGN
+          {cms.side_badge_text || 'SOVEREIGN SOVEREIGN SOVEREIGN'}
         </div>
 
         {/* Cinematic Bottom Shadow */}
-        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-surface to-transparent z-20"></div>
+        <div className="absolute inset-x-0 bottom-0 h-[30vh] bg-gradient-to-t from-surface via-surface to-transparent z-20 pointer-events-none"></div>
       </section>
 
       {/* --- PARADE SECTION: STAGGERED VISUAL FLOW --- */}
-      <section className="section-stack-pin z-[20] bg-surface overflow-hidden relative">
+      <section className="relative bg-surface py-40 z-[20]">
         {/* Section Transition Glow */}
-        <div className="absolute top-0 left-0 w-full h-64 edge-glow-red opacity-60 z-20 pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-96 edge-glow-red opacity-40 z-20 pointer-events-none"></div>
         <div className="absolute inset-0 gold-leaf-texture opacity-[0.03]"></div>
 
-        <div className="max-w-[1800px] mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-24 items-start">
+        <div className="max-w-[1800px] mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-24 items-start relative z-10">
           {/* Left: Sticky Info */}
           <div className="lg:col-span-5 lg:sticky lg:top-48">
             <div className="reveal">
               <div className="flex items-center gap-8 mb-16">
                 <div className="h-px w-32 bg-etalase-red"></div>
-                <span className="text-gold-500 text-sm tracking-[1.5em] uppercase font-black">Dynamic Parade</span>
+                <span className="text-gold-500 text-sm tracking-[1.5em] uppercase font-black">{cms.parade_badge || 'Dynamic Parade'}</span>
               </div>
 
               <h2 className="font-serif text-[8vw] lg:text-[10rem] leading-[0.8] text-text-main italic tracking-tighter mb-16 select-none">
-                <span className="block mb-6">The Grand</span>
+                <span className="block mb-6">{cms.manifesto_title_1 || 'The Grand'}</span>
                 <span className="not-italic metallic-gold block filter drop-shadow-[0_10px_40px_rgba(212,175,55,0.5)]">
-                  Etalase
+                  {cms.manifesto_title_2 || 'Etalase'}
                 </span>
               </h2>
 
-              <p className="text-text-muted text-xl md:text-2xl font-light leading-relaxed italic max-w-xl mb-16 opacity-0 reveal active">
+              <p className="text-text-muted text-xl md:text-2xl font-light leading-relaxed italic max-w-xl mb-16">
                 {cms.manifesto_desc || 'Setiap langkah adalah narasi, setiap kostum adalah prasasti. Kita tidak hanya melintas, kita meninggalkan jejak rupa yang abadi.'}
               </p>
 
               <div className="flex gap-16">
                 <div>
-                  <span className="block text-6xl font-black text-text-main italic">12+</span>
-                  <span className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">Fase</span>
+                  <span className="block text-6xl font-black text-text-main italic">{cms.parade_stat_1_val || '12+'}</span>
+                  <span className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_1_label || 'Fase'}</span>
                 </div>
                 <div>
-                  <span className="block text-6xl font-black text-text-main italic">150+</span>
-                  <span className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">Kolektif</span>
+                  <span className="block text-6xl font-black text-text-main italic">{cms.parade_stat_2_val || '150+'}</span>
+                  <span className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_2_label || 'Kolektif'}</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right: The Parade (Staggered Images) */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-12 pt-24 lg:pt-0">
-            {/* Item 1 - Fast */}
-            <div
-              className="parade-item reveal active"
-              style={{ transform: `translateY(${-scrollY * 0.1}px)` }}
-            >
-              <div className="ornamental-border p-3 bg-surface-lighter shadow-3xl">
-                <img src="/images/Salinan Ave 4 cymk.jpg" className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Parade 1" />
+          <div className="lg:col-span-7 grid grid-cols-2 gap-12 pt-24 lg:pt-32">
+            {[
+              { src: cms.parade_image_1 || '/images/Salinan Ave 4 cymk.jpg', delay: '0', speed: 0.1 },
+              { src: cms.parade_image_2 || '/images/IMG_6046 (1).JPG', delay: '300ms', speed: 0.02, margin: 'mt-64' },
+              { src: cms.parade_image_3 || '/images/Salinan Ave 4 cymk.jpg', delay: '500ms', speed: 0.05, margin: '-mt-32' },
+              { src: cms.parade_image_4 || '/images/IMG_6046 (1).JPG', delay: '700ms', speed: 0.15, margin: 'mt-24' }
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className={`parade-item reveal active ${item.margin || ''}`}
+                style={{ transform: `translateY(${-scrollY * item.speed}px)`, transitionDelay: item.delay }}
+              >
+                <div className="ornamental-border p-3 bg-surface-lighter shadow-3xl group overflow-hidden">
+                  <img src={item.src} className="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={`Parade ${idx + 1}`} />
+                </div>
               </div>
-            </div>
-            {/* Item 2 - Slow */}
-            <div
-              className="parade-item reveal delay-300 active mt-48 lg:mt-64"
-              style={{ transform: `translateY(${-scrollY * 0.02}px)` }}
-            >
-              <div className="ornamental-border p-3 bg-surface-lighter shadow-3xl">
-                <img src="/images/IMG_6046 (1).JPG" className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Parade 2" />
-              </div>
-            </div>
-            {/* Item 3 - Medium */}
-            <div
-              className="parade-item reveal delay-500 active -mt-24 lg:-mt-32"
-              style={{ transform: `translateY(${-scrollY * 0.05}px)` }}
-            >
-              <div className="ornamental-border p-3 bg-surface-lighter shadow-3xl">
-                <img src="/images/Salinan Ave 4 cymk.jpg" className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Parade 3" />
-              </div>
-            </div>
-            {/* Item 4 - Very Fast */}
-            <div
-              className="parade-item reveal delay-700 active mt-24"
-              style={{ transform: `translateY(${-scrollY * 0.15}px)` }}
-            >
-              <div className="ornamental-border p-3 bg-surface-lighter shadow-3xl">
-                <img src="/images/IMG_6046 (1).JPG" className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Parade 4" />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Large Scrolling Background Text */}
         <div
-          className="absolute bottom-1/4 left-0 whitespace-nowrap text-[35vw] font-black text-text-main/[0.015] pointer-events-none select-none uppercase"
-          style={{ transform: `translateX(${scrollY * 0.15}px)` }}
+          className="absolute bottom-1/4 left-0 whitespace-nowrap text-[35vw] font-black text-text-main/[0.015] pointer-events-none select-none uppercase z-0"
+          style={{ transform: `translateX(${scrollY * 0.1}px)` }}
         >
           MANIFESTO MANIFESTO MANIFESTO
         </div>
       </section>
 
       {/* --- MASTERPIECE SECTION: CINEMATIC QUOTE --- */}
-      <section className="section-stack-pin z-[30] bg-surface flex items-center justify-center overflow-hidden relative">
+      <section className="relative bg-surface py-60 flex items-center justify-center z-[30]">
         {/* Section Transition Glow */}
-        <div className="absolute top-0 left-0 w-full h-64 edge-glow-blue opacity-40 z-20 pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-96 edge-glow-blue opacity-30 z-20 pointer-events-none"></div>
         <div className="absolute inset-0 majestic-aura opacity-30 pointer-events-none"></div>
 
-        <div className="max-w-[1200px] mx-auto px-6 text-center relative z-10 reveal active">
+        <div className="max-w-[1200px] mx-auto px-6 text-center relative z-10 reveal">
           <blockquote
             className="font-serif italic text-[6vw] md:text-[5vw] lg:text-[4vw] leading-[1.2] text-text-main mb-12 select-none tracking-tight"
           >
@@ -255,41 +231,91 @@ export default function Home({ cms = {} }) {
       </section>
 
       {/* --- FASET KESENIAN: GRID OF EXCELLENCE --- */}
-      <section className="section-stack-pin z-[40] bg-surface relative">
+      <section className="relative bg-surface py-40 z-[40]">
         {/* Section Transition Glow */}
-        <div className="absolute top-0 left-0 w-full h-64 edge-glow-red opacity-50 z-20 pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-96 edge-glow-red opacity-40 z-20 pointer-events-none"></div>
         <div className="absolute inset-0 gold-leaf-texture opacity-5"></div>
+
         <div className="max-w-[1400px] mx-auto px-6 text-center mb-48 reveal">
-          <span className="text-etalase-red text-sm tracking-[2em] uppercase font-black mb-12 block">Faset Kesenian</span>
-          <h2 className="text-7xl md:text-[10rem] font-serif text-text-main italic leading-none tracking-tighter">Diverse Expression</h2>
+          <span className="text-etalase-red text-sm tracking-[2em] uppercase font-black mb-12 block">{cms.faset_badge || 'Faset Kesenian'}</span>
+          <h2 className="text-7xl md:text-[10rem] font-serif text-text-main italic leading-none tracking-tighter">{cms.faset_title || 'Diverse Expression'}</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 border-t border-border-main">
-          {['DANCE', 'THEATER', 'MUSIC', 'COSTUME', 'FILM', 'FINE ART'].map((faset, i) => (
-            <div
-              key={i}
-              className="group relative aspect-[4/5] lg:aspect-square overflow-hidden border-r border-b border-border-main reveal"
-              style={{ transitionDelay: `${i * 100}ms` }}
-            >
-              <div className="absolute inset-0 bg-black group-hover:bg-etalase-red/60 transition-all duration-700"></div>
-              <div className="absolute inset-0 p-16 flex flex-col justify-end z-10">
-                <span className="text-gold-500 text-[10px] tracking-[1em] uppercase font-black mb-6 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">FASET {i + 1}</span>
-                <h3 className="text-white text-5xl md:text-6xl font-black uppercase tracking-tighter transition-all duration-700 group-hover:-translate-y-4 group-hover:text-gold-500">{faset}</h3>
-                <div className="w-0 group-hover:w-full h-[2px] bg-gold-500 mt-8 transition-all duration-1000 ease-out"></div>
-              </div>
+        {/* STAGGERED ORGANIC LAYOUT */}
+        <div className="max-w-[1600px] mx-auto px-6 relative z-10">
 
-              {/* Artistic Glyph Overlay on Hover */}
-              <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-black text-white/[0.04] pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-1000 uppercase italic leading-none"
-                style={{ transform: i % 2 === 0 ? 'translate(-50%, -50%) rotate(10deg)' : 'translate(-50%, -50%) rotate(-10deg)' }}
-              >
-                {faset[0]}
-              </div>
+          {/* Large Background Glyph (Parallax) */}
+          <div
+            className="absolute top-0 right-0 text-[40vw] font-black text-text-main/[0.02] italic leading-none pointer-events-none select-none z-0"
+            style={{ transform: `translateY(${scrollY * 0.15}px)` }}
+          >
+            FASET
+          </div>
 
-              {/* Individual Aura */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-40 transition-opacity duration-1000 pointer-events-none majestic-aura"></div>
-            </div>
-          ))}
+          <div className="flex flex-wrap -mx-4">
+            {(divisions && divisions.length > 0 ? divisions : [
+              { name: 'DANCE', image_url: '/images/dance_performance.png' },
+              { name: 'THEATER', image_url: '/images/theater_scene.png' },
+              { name: 'MUSIC', image_url: '/images/hero_carnival.png' },
+              { name: 'COSTUME', image_url: '/images/costume_detail.png' },
+              { name: 'FILM', image_url: '/images/theater_scene.png' },
+              { name: 'FINE ART', image_url: '/images/costume_detail.png' }
+            ]).map((faset, i) => {
+              const layouts = [
+                { offset: 'mt-0', width: 'w-full md:w-7/12', speed: 0.05 },
+                { offset: 'mt-24 md:mt-48', width: 'w-full md:w-4/12 ml-auto', speed: 0.1 },
+                { offset: '-mt-12 md:-mt-32', width: 'w-full md:w-5/12', speed: 0.03 },
+                { offset: 'mt-12 md:mt-24', width: 'w-full md:w-6/12 ml-[5%]', speed: 0.08 },
+                { offset: 'mt-0 md:-mt-64 mr-auto', width: 'w-full md:w-4/12 ml-[10%]', speed: 0.12 },
+                { offset: 'mt-24 md:mt-12 ml-auto', width: 'w-full md:w-7/12', speed: 0.05 }
+              ];
+              const layout = layouts[i % layouts.length];
+
+              return (
+                <div
+                  key={i}
+                  className={`${layout.width} px-4 mb-24 relative z-10`}
+                >
+                  <div
+                    className={`group relative aspect-[4/5] overflow-hidden ornamental-border bg-black reveal ${layout.offset}`}
+                    style={{ transitionDelay: `${i * 150}ms` }}
+                  >
+                    {/* Background Image with Ultra-Slow Ken Burns */}
+                    <img
+                      src={faset.image_url || faset.img}
+                      className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-[3s] ease-out ken-burns"
+                      alt={faset.name}
+                    />
+
+                    {/* Majestic Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:from-etalase-red/60 transition-all duration-1000"></div>
+                    <div className="absolute inset-0 majestic-aura opacity-0 group-hover:opacity-40 transition-opacity duration-1000 pointer-events-none"></div>
+
+                    {/* Content Reveal */}
+                    <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                      <div className="overflow-hidden">
+                        <span className="text-gold-500 text-[9px] tracking-[0.8em] uppercase font-black block translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+                          FASET 0{i + 1}
+                        </span>
+                      </div>
+                      <div className="h-px w-0 group-hover:w-24 bg-gold-500/30 my-4 transition-all duration-1000 delay-300"></div>
+                      <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter transition-all duration-1000 group-hover:text-gold-500">
+                        {faset.short_name || faset.name}
+                      </h3>
+                    </div>
+
+                    {/* Individual Glyph Parallax */}
+                    <div
+                      className="absolute -top-10 -right-10 text-[15rem] font-black text-white/[0.02] pointer-events-none select-none italic"
+                      style={{ transform: `translateY(${scrollY * layout.speed}px)` }}
+                    >
+                      {(faset.short_name || faset.name || 'E')[0]}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -301,6 +327,13 @@ export default function Home({ cms = {} }) {
                 @keyframes ultra-slow-zoom {
                     from { transform: scale(1.1); }
                     to { transform: scale(1.2); }
+                }
+                .ken-burns {
+                    animation: ken-burns-anim 40s infinite alternate linear;
+                }
+                @keyframes ken-burns-anim {
+                    0% { transform: scale(1) translate(0, 0); }
+                    100% { transform: scale(1.3) translate(-2%, -2%); }
                 }
                 .reveal {
                     opacity: 0;

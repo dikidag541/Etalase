@@ -22,6 +22,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        // Seed divisions
+        $this->call([
+            DivisionSeeder::class,
+            PageSettingsSeeder::class,
+        ]);
+
         // Create 12 artworks
         Artwork::factory(12)->create();
     }

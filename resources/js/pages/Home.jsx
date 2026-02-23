@@ -59,27 +59,17 @@ export default function Home({ cms = {}, divisions = [] }) {
           <div className="absolute inset-0 majestic-aura opacity-30 pointer-events-none"></div>
         </div>
 
-        {/* Floating Narrative Cards (Staggered Movement) */}
-        <div
-          className="absolute left-[5%] top-[30%] -translate-y-1/2 hidden 2xl:block"
-          style={{ transform: `translateY(${-scrollY * 0.1}px) rotate(-8deg)` }}
-        >
-          <div className="w-[400px] h-[550px] ornamental-border p-3 bg-surface/5 backdrop-blur-2xl shadow-[0_50px_100px_rgba(0,0,0,0.8)] group transition-transform duration-[1.5s] hover:rotate-0">
-            <img src="/images/Salinan Ave 4 cymk.webp" className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2s]" alt="Sovereign Detail 1" />
-          </div>
-        </div>
-
-        <div
-          className="absolute right-[5%] top-[60%] -translate-y-1/2 hidden 2xl:block"
-          style={{ transform: `translateY(${-scrollY * 0.05}px) rotate(8deg)` }}
-        >
-          <div className="w-[400px] h-[550px] ornamental-border p-3 bg-surface/5 backdrop-blur-2xl shadow-[0_50px_100px_rgba(0,0,0,0.8)] group transition-transform duration-[1.5s] hover:rotate-0">
-            <img src="/images/IMG_6046 (1).JPG" className="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[2s]" alt="Sovereign Detail 2" />
-          </div>
-        </div>
-
         {/* Main Content: Monumental Typography */}
         <div className="relative z-10 w-full min-h-screen flex flex-col justify-end items-center pb-[4vh]">
+
+          {/* Layer 0: Banner Text */}
+          {cms.hero_banner_text && (
+            <div className="absolute top-[20%] left-[5vw] z-20 reveal">
+              <span className="text-gold-500 text-[10px] tracking-[0.8em] uppercase font-black">
+                {cms.hero_banner_text}
+              </span>
+            </div>
+          )}
 
           {/* Layer 1: UKMK */}
           <div
@@ -133,7 +123,7 @@ export default function Home({ cms = {}, divisions = [] }) {
           className="absolute top-1/2 left-0 whitespace-nowrap text-[35vw] font-black text-white/[0.015] select-none italic leading-none pointer-events-none uppercase z-0"
           style={{ transform: `translateX(${-scrollY * 0.1}px) translateY(-50%)` }}
         >
-          {cms.side_badge_text || 'SOVEREIGN SOVEREIGN SOVEREIGN'}
+          {cms.side_badge_text || 'SOVEREIGN SOVEREIGN SOVEREIGN'} {cms.side_badge_year}
         </div>
 
         {/* Cinematic Bottom Shadow */}
@@ -187,15 +177,7 @@ export default function Home({ cms = {}, divisions = [] }) {
               { src: cms.parade_image_3 || '/images/Salinan Ave 4 cymk.webp', delay: '500ms', speed: 0.05, margin: '-mt-32' },
               { src: cms.parade_image_4 || '/images/IMG_6046 (1).JPG', delay: '700ms', speed: 0.15, margin: 'mt-24' }
             ].map((item, idx) => (
-              <div
-                key={idx}
-                className={`parade-item reveal active ${item.margin || ''}`}
-                style={{ transform: `translateY(${-scrollY * item.speed}px)`, transitionDelay: item.delay }}
-              >
-                <div className="ornamental-border p-3 bg-surface-lighter shadow-3xl group overflow-hidden">
-                  <img src={item.src} className="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" alt={`Parade ${idx + 1}`} />
-                </div>
-              </div>
+              <ParadeItem key={idx} item={item} scrollY={scrollY} idx={idx} />
             ))}
           </div>
         </div>
@@ -205,7 +187,7 @@ export default function Home({ cms = {}, divisions = [] }) {
           className="absolute bottom-1/4 left-0 whitespace-nowrap text-[35vw] font-black text-text-main/[0.015] pointer-events-none select-none uppercase z-0"
           style={{ transform: `translateX(${scrollY * 0.1}px)` }}
         >
-          MANIFESTO MANIFESTO MANIFESTO
+          {cms.manifesto_scroll_text || 'MANIFESTO MANIFESTO MANIFESTO'}
         </div>
       </section>
 
@@ -213,7 +195,15 @@ export default function Home({ cms = {}, divisions = [] }) {
       <section className="relative bg-surface py-60 flex items-center justify-center z-[30]">
         {/* Section Transition Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-blue opacity-30 z-20 pointer-events-none"></div>
-        <div className="absolute inset-0 majestic-aura opacity-30 pointer-events-none"></div>
+        <div className="absolute inset-0 z-0">
+          <img
+            src={cms.masterpiece_image || '/images/hero_carnival.png'}
+            className="w-full h-full object-cover opacity-20 grayscale brightness-50"
+            alt="Masterpiece Background"
+          />
+          <div className="absolute inset-0 majestic-aura opacity-30 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+        </div>
 
         <div className="max-w-[1200px] mx-auto px-6 text-center relative z-10 reveal">
           <blockquote
@@ -249,7 +239,7 @@ export default function Home({ cms = {}, divisions = [] }) {
             className="absolute top-0 right-0 text-[40vw] font-black text-text-main/[0.02] italic leading-none pointer-events-none select-none z-0"
             style={{ transform: `translateY(${scrollY * 0.15}px)` }}
           >
-            FASET
+            {cms.faset_scroll_text || 'FASET'}
           </div>
 
           <div className="flex flex-wrap -mx-4">
@@ -385,4 +375,53 @@ function ArrowRightIcon({ className }) {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
     </svg>
   )
+}
+
+function ParadeItem({ item, scrollY, idx }) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    setMousePos({ x, y });
+  };
+
+  return (
+    <div
+      className={`parade-item reveal active ${item.margin || ''}`}
+      style={{
+        transform: `translateY(${-scrollY * item.speed}px)`,
+        transitionDelay: item.delay,
+        zIndex: isHovered ? 50 : 1
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setMousePos({ x: 0, y: 0 });
+      }}
+    >
+      <div
+        className="ornamental-border p-3 bg-surface-lighter shadow-3xl group overflow-hidden transition-transform duration-300 ease-out"
+        style={{
+          transform: isHovered
+            ? `perspective(1000px) rotateX(${mousePos.y * -15}deg) rotateY(${mousePos.x * 15}deg) scale3d(1.05, 1.05, 1.05)`
+            : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
+        }}
+      >
+        <img
+          src={item.src}
+          className="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+          alt={`Parade ${idx + 1}`}
+          style={{
+            transform: isHovered
+              ? `translate3d(${mousePos.x * 20}px, ${mousePos.y * 20}px, 0)`
+              : 'translate3d(0, 0, 0)'
+          }}
+        />
+      </div>
+    </div>
+  );
 }

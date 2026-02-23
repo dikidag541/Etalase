@@ -16,7 +16,6 @@ class PageSettingsSeeder extends Seeder
     public function run(): void
     {
         $settings = [
-            // --- HOME PAGE ---
             ['page' => 'home', 'key' => 'hero_video', 'value' => '/videos/Trailer.mp4', 'type' => 'video', 'label' => 'Hero Background Video', 'group' => 'Hero Section'],
             ['page' => 'home', 'key' => 'hero_title_1', 'value' => 'UKMK', 'type' => 'text', 'label' => 'Hero Title Top', 'group' => 'Hero Section'],
             ['page' => 'home', 'key' => 'hero_title_2', 'value' => 'ETALASE', 'type' => 'text', 'label' => 'Hero Title Bottom (Gold)', 'group' => 'Hero Section'],
@@ -25,28 +24,16 @@ class PageSettingsSeeder extends Seeder
             ['page' => 'home', 'key' => 'side_badge_year', 'value' => '2026', 'type' => 'text', 'label' => 'Side Badge Year', 'group' => 'Hero Section'],
             ['page' => 'home', 'key' => 'side_badge_text', 'value' => 'SOVEREIGN MAXIMALIST', 'type' => 'text', 'label' => 'Side Badge Text', 'group' => 'Hero Section'],
             
-            ['page' => 'home', 'key' => 'masterpiece_image', 'value' => '/images/hero_carnival.png', 'type' => 'image', 'label' => 'Masterpiece Main Image', 'group' => 'Masterpiece Section'],
-            ['page' => 'home', 'key' => 'masterpiece_quote', 'value' => '"Setiap helai kain adalah doa, setiap gerak adalah revolusi rupa raga."', 'type' => 'textarea', 'label' => 'Masterpiece Quote', 'group' => 'Masterpiece Section'],
+            ['page' => 'home', 'key' => 'manifesto_scroll_text', 'value' => 'MANIFESTO MANIFESTO MANIFESTO', 'type' => 'text', 'label' => 'Manifesto Scrolling Text', 'group' => 'Manifesto'],
+            ['page' => 'home', 'key' => 'faset_scroll_text', 'value' => 'FASET', 'type' => 'text', 'label' => 'Faset Background Text', 'group' => 'Faset Section'],
             
-            ['page' => 'home', 'key' => 'manifesto_title_1', 'value' => 'The Grand', 'type' => 'text', 'label' => 'Manifesto title 1', 'group' => 'Manifesto'],
-            ['page' => 'home', 'key' => 'manifesto_title_2', 'value' => 'Expression', 'type' => 'text', 'label' => 'Manifesto title 2', 'group' => 'Manifesto'],
-            ['page' => 'home', 'key' => 'manifesto_desc', 'value' => 'UKMK Kesenian Etalase adalah sebuah wahana transformasi di mana kesenian tradisional bertemu dengan ambisi futuristik. Kita tidak hanya melintas, kita meninggalkan jejak rupa yang abadi.', 'type' => 'textarea', 'label' => 'Manifesto Description', 'group' => 'Manifesto'],
-
-            ['page' => 'home', 'key' => 'parade_image_1', 'value' => '/images/Salinan Ave 4 cymk.jpg', 'type' => 'image', 'label' => 'Parade Image 1', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_image_2', 'value' => '/images/IMG_6046 (1).JPG', 'type' => 'image', 'label' => 'Parade Image 2', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_image_3', 'value' => '/images/Salinan Ave 4 cymk.jpg', 'type' => 'image', 'label' => 'Parade Image 3', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_image_4', 'value' => '/images/IMG_6046 (1).JPG', 'type' => 'image', 'label' => 'Parade Image 4', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_stat_1_val', 'value' => '12+', 'type' => 'text', 'label' => 'Stat 1 Value', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_stat_1_label', 'value' => 'Fase', 'type' => 'text', 'label' => 'Stat 1 Label', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_stat_2_val', 'value' => '150+', 'type' => 'text', 'label' => 'Stat 2 Value', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_stat_2_label', 'value' => 'Kolektif', 'type' => 'text', 'label' => 'Stat 2 Label', 'group' => 'Parade Section'],
-            ['page' => 'home', 'key' => 'parade_badge', 'value' => 'Dynamic Parade', 'type' => 'text', 'label' => 'Parade Header Badge', 'group' => 'Parade Section'],
-
-            ['page' => 'home', 'key' => 'faset_badge', 'value' => 'Faset Kesenian', 'type' => 'text', 'label' => 'Faset Header Badge', 'group' => 'Faset Section'],
-            ['page' => 'home', 'key' => 'faset_title', 'value' => 'Diverse Expression', 'type' => 'text', 'label' => 'Faset Main Title', 'group' => 'Faset Section'],
-
             // --- ABOUT PAGE ---
+            ['page' => 'about', 'key' => 'about_hero_image', 'value' => '/images/Salinan Ave 4 cymk.webp', 'type' => 'image', 'label' => 'About Hero Background', 'group' => 'Hero Section'],
+            ['page' => 'about', 'key' => 'concept_badge', 'value' => 'CONCEPT', 'type' => 'text', 'label' => 'Concept Badge', 'group' => 'Hero Section'],
             ['page' => 'about', 'key' => 'concept_title', 'value' => 'Living the Legacy', 'type' => 'text', 'label' => 'Concept Page Subtitle', 'group' => 'Hero Section'],
+            ['page' => 'about', 'key' => 'philosophy_badge', 'value' => 'Misi & Filosofi', 'type' => 'text', 'label' => 'Philosophy Badge', 'group' => 'Philosophy Section'],
+            ['page' => 'about', 'key' => 'philosophy_title_1', 'value' => 'Lahir Dari', 'type' => 'text', 'label' => 'Philosophy Title line 1', 'group' => 'Philosophy Section'],
+            ['page' => 'about', 'key' => 'philosophy_title_2', 'value' => 'Api Tradisi', 'type' => 'text', 'label' => 'Philosophy Title line 2 (Gold)', 'group' => 'Philosophy Section'],
             ['page' => 'about', 'key' => 'mission_text', 'value' => 'Berdiri sebagai garda terdepan kreativitas Universitas Jember, Etalase mengadopsi prinsip kedaulatan dalam setiap ekspresi.', 'type' => 'textarea', 'label' => 'Mission Paragraph 1', 'group' => 'Philosophy Section'],
             ['page' => 'about', 'key' => 'mission_text_2', 'value' => 'Terinspirasi oleh kemegahan JFC, kami menciptakan panggung di mana seni tidak hanya disaksikan, tapi dirasakan sebagai identitas.', 'type' => 'textarea', 'label' => 'Mission Paragraph 2', 'group' => 'Philosophy Section'],
             ['page' => 'about', 'key' => 'about_quote', 'value' => 'Jadilah bagian dari revolusi rupa dan raga di panggung Etalase.', 'type' => 'textarea', 'label' => 'Join the Parade Quote', 'group' => 'Call to Action'],
@@ -57,10 +44,17 @@ class PageSettingsSeeder extends Seeder
             ['page' => 'about', 'key' => 'pillar_2_desc', 'value' => 'Sinergi antar faset yang menciptakan harmoni sempurna.', 'type' => 'textarea', 'label' => 'Pillar 2 Desc', 'group' => 'Pillars'],
             ['page' => 'about', 'key' => 'pillar_3_title', 'value' => 'Sovereignty', 'type' => 'text', 'label' => 'Pillar 3 Title', 'group' => 'Pillars'],
             ['page' => 'about', 'key' => 'pillar_3_desc', 'value' => 'Kebebasan penuh dalam bereksperimen dengan bahasa rupa.', 'type' => 'textarea', 'label' => 'Pillar 3 Desc', 'group' => 'Pillars'],
-
+ 
             // --- GALLERY HEADER ---
+            ['page' => 'gallery', 'key' => 'gallery_badge', 'value' => 'Archive & Documentation', 'type' => 'text', 'label' => 'Gallery Header Badge', 'group' => 'Header'],
             ['page' => 'gallery', 'key' => 'gallery_title_1', 'value' => 'Visionary', 'type' => 'text', 'label' => 'Gallery Title 1', 'group' => 'Header'],
             ['page' => 'gallery', 'key' => 'gallery_title_2', 'value' => 'Archive', 'type' => 'text', 'label' => 'Gallery Title 2', 'group' => 'Header'],
+ 
+            // --- ARTICLES PAGE ---
+            ['page' => 'articles', 'key' => 'articles_badge', 'value' => 'Official Publication • Perspectives', 'type' => 'text', 'label' => 'Articles Header Badge', 'group' => 'Header'],
+            ['page' => 'articles', 'key' => 'articles_title_1', 'value' => 'Esensi', 'type' => 'text', 'label' => 'Articles Title Line 1', 'group' => 'Header'],
+            ['page' => 'articles', 'key' => 'articles_title_2', 'value' => 'Kesenian', 'type' => 'text', 'label' => 'Articles Title Line 2 (Gold)', 'group' => 'Header'],
+            ['page' => 'articles', 'key' => 'articles_bg_text', 'value' => 'EDITORIAL', 'type' => 'text', 'label' => 'Articles Background Text', 'group' => 'Header'],
 
             // --- TEAM PAGE ---
             ['page' => 'team', 'key' => 'team_hero_image', 'value' => '/images/costume_detail.png', 'type' => 'image', 'label' => 'Hero Background Image', 'group' => 'Hero Section'],

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Head } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout'
 
-export default function ArticleDetail({ article }) {
+export default function ArticleDetail({ cms = {}, article }) {
     return (
         <MainLayout>
             <Head title={`${article.title} - UKM Etalase`} />

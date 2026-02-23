@@ -35,14 +35,14 @@ export default function About({ cms = {} }) {
                 <div
                     className="absolute inset-0 z-0 opacity-40 bg-fixed bg-cover bg-center"
                     style={{
-                        backgroundImage: "url('/images/Salinan Ave 4 cymk.webp')",
+                        backgroundImage: `url('${cms.about_hero_image || '/images/Salinan Ave 4 cymk.webp'}')`,
                         transform: `scale(${1 + scrollY * 0.0001})`
                     }}
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface opacity-90"></div>
 
                 <div className="relative z-10 text-center reveal">
-                    <h1 className="maximalist-title text-reveal-mask">CONCEPT</h1>
+                    <h1 className="maximalist-title text-reveal-mask">{cms.concept_badge || 'CONCEPT'}</h1>
                     <h2 className="font-serif text-5xl md:text-8xl text-gold-500 italic -mt-10 tracking-widest uppercase">{cms.concept_title || 'The Sovereign Manifesto'}</h2>
                 </div>
             </section>
@@ -52,9 +52,9 @@ export default function About({ cms = {} }) {
                 <div className="max-w-[1400px] mx-auto px-12 sm:px-24">
                     <div className="grid lg:grid-cols-12 gap-24 items-center">
                         <div className="lg:col-span-12 mb-32 curtain-reveal">
-                            <span className="text-gold-500 text-xs tracking-[1em] uppercase block mb-12 font-black">Misi & Filosofi</span>
+                            <span className="text-gold-500 text-xs tracking-[1em] uppercase block mb-12 font-black">{cms.philosophy_badge || 'Misi & Filosofi'}</span>
                             <h3 className="font-serif text-7xl md:text-[10vw] text-text-main italic leading-none">
-                                Lahir Dari <br /> <span className="not-italic metallic-gold">Api Tradisi</span>
+                                {cms.philosophy_title_1 || 'Lahir Dari'} <br /> <span className="not-italic metallic-gold">{cms.philosophy_title_2 || 'Api Tradisi'}</span>
                             </h3>
                         </div>
 

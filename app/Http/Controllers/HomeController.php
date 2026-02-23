@@ -37,18 +37,28 @@ class HomeController extends Controller
 
     public function articles()
     {
+        $cms = PageSetting::where('page', 'articles')
+            ->get()
+            ->pluck('value', 'key');
+
         $articles = \App\Models\Article::latest()->get();
 
         return Inertia::render('Articles', [
+            'cms' => $cms,
             'articles' => $articles
         ]);
     }
 
     public function articleDetail($slug)
     {
+        $cms = PageSetting::where('page', 'articles')
+            ->get()
+            ->pluck('value', 'key');
+
         $article = \App\Models\Article::where('slug', $slug)->firstOrFail();
 
         return Inertia::render('ArticleDetail', [
+            'cms' => $cms,
             'article' => $article
         ]);
     }

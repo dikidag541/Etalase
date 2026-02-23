@@ -32,7 +32,7 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
                 <div className="max-w-[1800px] mx-auto px-12 sm:px-24">
                     <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-32 reveal">
                         <div>
-                            <span className="text-gold-500 text-xs tracking-[1.5em] uppercase block mb-8 font-black">Archive & Documentation</span>
+                            <span className="text-gold-500 text-xs tracking-[1.5em] uppercase block mb-8 font-black">{cms.gallery_badge || 'Archive & Documentation'}</span>
                             <h1 className="font-serif text-[12vw] leading-[0.8] text-text-main italic tracking-tighter">{cms.gallery_title_1 || 'Grand'} <br /><span className="not-italic metallic-gold">{cms.gallery_title_2 || 'Gallery'}</span></h1>
                         </div>
 

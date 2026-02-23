@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, Head } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout'
 
-export default function Articles({ articles = [] }) {
+export default function Articles({ cms = {}, articles = [] }) {
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -24,11 +24,11 @@ export default function Articles({ articles = [] }) {
 
             {/* --- HEADER: EDITORIAL SCALE --- */}
             <section className="pt-64 pb-32 bg-surface transition-colors duration-500 overflow-hidden relative border-b border-border-main">
-                <div className="absolute inset-x-0 bottom-0 text-[25vw] font-serif text-text-main/5 pointer-events-none select-none italic text-center leading-[0.5]">EDITORIAL</div>
+                <div className="absolute inset-x-0 bottom-0 text-[25vw] font-serif text-text-main/5 pointer-events-none select-none italic text-center leading-[0.5]">{cms.articles_bg_text || 'EDITORIAL'}</div>
                 <div className="max-w-[1400px] mx-auto px-12 sm:px-24 relative z-10">
                     <div className="reveal">
-                        <span className="text-gold-500 text-xs tracking-[1.5em] uppercase block mb-8 font-black">Official Publication • Perspectives</span>
-                        <h1 className="font-serif text-7xl md:text-9xl text-text-main italic tracking-tighter">Esensi <br /><span className="not-italic metallic-gold">Kesenian</span></h1>
+                        <span className="text-gold-500 text-xs tracking-[1.5em] uppercase block mb-8 font-black">{cms.articles_badge || 'Official Publication • Perspectives'}</span>
+                        <h1 className="font-serif text-7xl md:text-9xl text-text-main italic tracking-tighter">{cms.articles_title_1 || 'Esensi'} <br /><span className="not-italic metallic-gold">{cms.articles_title_2 || 'Kesenian'}</span></h1>
                     </div>
                 </div>
             </section>

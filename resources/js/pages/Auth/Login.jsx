@@ -10,7 +10,8 @@ export default function Login() {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('login'));
+        console.log('Signature submitted. Validating identity at /login...');
+        post('/login');
     };
 
     return (
@@ -31,14 +32,14 @@ export default function Login() {
                     <p className="text-[10px] tracking-[0.5em] uppercase text-white/30 font-black">Authentication Protocol</p>
                 </div>
 
-                <form onSubmit={submit} className="space-y-8">
+                <form onSubmit={submit} noValidate className="space-y-8">
                     <div>
                         <label className="block text-[10px] uppercase tracking-[0.3em] text-white/40 font-black mb-3 ml-1">Signature Identity</label>
                         <input
-                            type="email"
+                            type="text"
                             value={data.email}
                             onChange={e => setData('email', e.target.value)}
-                            placeholder="Email Address"
+                            placeholder="Email or Signature ID"
                             className="w-full bg-white/[0.03] border border-white/10 px-6 py-5 rounded-lg text-sm focus:outline-none focus:border-gold-500/50 transition-all placeholder:text-white/10"
                         />
                         {errors.email && <p className="text-etalase-red text-[10px] mt-3 uppercase tracking-wider">{errors.email}</p>}

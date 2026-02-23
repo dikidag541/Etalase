@@ -12,50 +12,44 @@ class DivisionSeeder extends Seeder
      */
     public function run(): void
     {
+        // Clear existing divisions
+        Division::truncate();
+
         $divisions = [
             [
-                'short_name' => 'DANCE',
-                'title' => 'The Movement',
+                'short_name' => 'TARI',
+                'title' => 'Traditional & Modern',
                 'image_path' => '/images/dance_performance.png',
                 'order' => 1
             ],
             [
-                'short_name' => 'THEATER',
-                'title' => 'The Narrative',
-                'image_path' => '/images/theater_scene.png',
+                'short_name' => 'MUSIK',
+                'title' => 'Harmonious Rhythm',
+                'image_path' => '/images/hero_carnival.png',
                 'order' => 2
             ],
             [
-                'short_name' => 'MUSIC',
-                'title' => 'The Harmony',
-                'image_path' => '/images/hero_carnival.png',
+                'short_name' => 'FOTOGRAFI',
+                'title' => 'Visual Archive',
+                'image_path' => '/images/costume_detail.png',
                 'order' => 3
             ],
             [
-                'short_name' => 'COSTUME',
-                'title' => 'The Armor',
-                'image_path' => '/images/costume_detail.png',
+                'short_name' => 'THEATER',
+                'title' => 'Dramatic Narrative',
+                'image_path' => '/images/theater_scene.png',
                 'order' => 4
             ],
             [
-                'short_name' => 'FILM',
-                'title' => 'The Vision',
-                'image_path' => '/images/theater_scene.png',
+                'short_name' => 'PSM',
+                'title' => 'Padusan Suara Mahasiswa',
+                'image_path' => '/images/hero_carnival.png',
                 'order' => 5
-            ],
-            [
-                'short_name' => 'FINE ART',
-                'title' => 'The Canvas',
-                'image_path' => '/images/costume_detail.png',
-                'order' => 6
             ],
         ];
 
         foreach ($divisions as $division) {
-            Division::updateOrCreate(
-                ['short_name' => $division['short_name']],
-                $division
-            );
+            Division::create($division);
         }
     }
 }

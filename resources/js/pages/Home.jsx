@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Head, Link } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout'
+import { useLang } from '@/lib/LangContext'
+import CMSText from '@/Components/CMSText'
 
 export default function Home({ cms = {}, divisions = [] }) {
   const [scrollY, setScrollY] = useState(0);
+  const { t } = useLang();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -64,9 +67,9 @@ export default function Home({ cms = {}, divisions = [] }) {
           {/* Layer 0: Banner Text */}
           {cms.hero_banner_text && (
             <div className="absolute top-[20%] left-[5vw] z-20 reveal">
-              <span className="text-gold-500 text-[10px] tracking-[0.8em] uppercase font-black">
+              <CMSText className="text-gold-500 text-[10px] tracking-[0.8em] uppercase font-black">
                 {cms.hero_banner_text}
-              </span>
+              </CMSText>
             </div>
           )}
 
@@ -104,14 +107,14 @@ export default function Home({ cms = {}, divisions = [] }) {
 
           {/* Manifesto & CTA Section */}
           <div className="mt-24 flex flex-col items-center gap-12 reveal relative z-20">
-            <p className="text-white text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase opacity-40 mix-blend-difference">
+            <CMSText as="p" className="text-white text-[10px] md:text-xs font-bold tracking-[0.6em] uppercase opacity-40 mix-blend-difference">
               {cms.hero_subtitle || 'Sebuah wahana transformasi'}
-            </p>
+            </CMSText>
             <Link
               href="/gallery"
               className="group relative px-20 py-7 bg-white text-black font-black uppercase text-[10px] tracking-[0.6em] transition-all hover:scale-105 shadow-2xl overflow-hidden"
             >
-              <span className="relative z-10">Expand Vision</span>
+              <span className="relative z-10">{t('home_expand_vision')}</span>
               <div className="absolute inset-0 bg-gold-500 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
             </Link>
           </div>
@@ -151,18 +154,18 @@ export default function Home({ cms = {}, divisions = [] }) {
                 </span>
               </h2>
 
-              <p className="text-text-muted text-xl md:text-2xl font-light leading-relaxed italic max-w-xl mb-16">
+              <CMSText as="p" className="text-text-muted text-xl md:text-2xl font-light leading-relaxed italic max-w-xl mb-16">
                 {cms.manifesto_desc || 'Setiap langkah adalah narasi, setiap kostum adalah prasasti. Kita tidak hanya melintas, kita meninggalkan jejak rupa yang abadi.'}
-              </p>
+              </CMSText>
 
               <div className="flex gap-16">
                 <div>
                   <span className="block text-6xl font-black text-text-main italic">{cms.parade_stat_1_val || '12+'}</span>
-                  <span className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_1_label || 'Fase'}</span>
+                  <CMSText className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_1_label || 'Fase'}</CMSText>
                 </div>
                 <div>
                   <span className="block text-6xl font-black text-text-main italic">{cms.parade_stat_2_val || '150+'}</span>
-                  <span className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_2_label || 'Kolektif'}</span>
+                  <CMSText className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_2_label || 'Kolektif'}</CMSText>
                 </div>
               </div>
             </div>
@@ -205,16 +208,14 @@ export default function Home({ cms = {}, divisions = [] }) {
         </div>
 
         <div className="max-w-[1200px] mx-auto px-6 text-center relative z-10 reveal">
-          <blockquote
-            className="font-serif italic text-[6vw] md:text-[5vw] lg:text-[4vw] leading-[1.2] text-text-main mb-12 select-none tracking-tight"
-          >
+          <CMSText as="blockquote" className="font-serif italic text-[6vw] md:text-[5vw] lg:text-[4vw] leading-[1.2] text-text-main mb-12 select-none tracking-tight">
             "{cms.masterpiece_quote || 'Setiap helai kain adalah doa, setiap gerak adalah revolusi rupa raga.'}"
-          </blockquote>
+          </CMSText>
           <Link
             href="/about"
             className="text-gold-500 text-sm font-black uppercase tracking-[1.5em] border-b border-gold-500/30 pb-4 hover:border-gold-500 hover:tracking-[1.8em] transition-all inline-flex items-center gap-12 group"
           >
-            The Essence <ArrowRightIcon className="w-8 h-8 transition-transform group-hover:translate-x-6" />
+            {t('home_the_essence')} <ArrowRightIcon className="w-8 h-8 transition-transform group-hover:translate-x-6" />
           </Link>
         </div>
       </section>
@@ -380,6 +381,7 @@ function ParadeItem({ item, scrollY, idx }) {
 function DivisionCard({ faset, i, scrollY, isDarkMode }) {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const { t } = useLang();
 
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -446,7 +448,7 @@ function DivisionCard({ faset, i, scrollY, isDarkMode }) {
         <div className="absolute inset-0 p-12 flex flex-col justify-end pointer-events-none">
           <div className="overflow-hidden">
             <span className="text-gold-500 text-[10px] tracking-[0.8em] uppercase font-black block translate-y-full group-hover:translate-y-0 transition-transform duration-700">
-              EXPLORE FASET
+              {t('home_explore_faset')}
             </span>
           </div>
           <div className="h-px w-0 group-hover:w-32 bg-gold-500/30 my-6 transition-all duration-1000 delay-300"></div>
@@ -454,7 +456,7 @@ function DivisionCard({ faset, i, scrollY, isDarkMode }) {
             {faset.short_name || faset.name || 'FASET'}
           </h3>
           <p className="text-white/0 group-hover:text-white/60 text-[10px] tracking-widest uppercase font-bold mt-4 transition-all duration-700 delay-500 max-w-xs leading-relaxed">
-            Menyelami kedalaman estetika {(faset.name || 'seni').toLowerCase()} etalase yang monumental.
+            {t('home_division_caption', faset.name || 'seni')}
           </p>
         </div>
 

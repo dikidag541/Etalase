@@ -2,11 +2,14 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Head } from '@inertiajs/react'
 import MainLayout from '@/Layouts/MainLayout'
 import CinematicHero from '@/Components/CinematicHero'
+import { useLang } from '@/lib/LangContext'
+import CMSText from '@/Components/CMSText'
 
 export default function Gallery({ cms = {}, initialItems = [] }) {
     const [activeFilter, setActiveFilter] = useState('ALL');
     const [scrollY, setScrollY] = useState(0);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const { t } = useLang();
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -76,22 +79,22 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
             />
 
             {/* --- SECTION: THE HISTORY (TIMELINE) --- */}
-            <section className="py-64 bg-[#050505] relative overflow-hidden">
+            <section className="py-64 bg-surface relative overflow-hidden transition-colors duration-500">
                 <div className="absolute inset-0 gold-leaf-texture opacity-5"></div>
 
                 <div className="container mx-auto px-12 lg:px-24">
                     <div className="flex flex-col lg:flex-row gap-24 items-start">
                         <div className="lg:w-1/3 sticky top-48 reveal">
-                            <span className="text-etalase-red text-[10px] tracking-[1em] uppercase font-black block mb-8">
+                            <CMSText className="text-etalase-red text-[10px] tracking-[1em] uppercase font-black block mb-8">
                                 {cms.gallery_history_badge || "CHRONICLES"}
-                            </span>
-                            <h2 className="font-serif text-6xl text-white italic mb-12">
-                                {cms.gallery_history_title_1 || "The Path of"} <br />
-                                <span className="metallic-gold not-italic">{cms.gallery_history_title_2 || "Sovereignty"}</span>
+                            </CMSText>
+                            <h2 className="font-serif text-6xl text-text-main italic mb-12">
+                                <CMSText>{cms.gallery_history_title_1 || "The Path of"}</CMSText> <br />
+                                <CMSText className="metallic-gold not-italic">{cms.gallery_history_title_2 || "Sovereignty"}</CMSText>
                             </h2>
-                            <p className="text-text-muted text-lg font-light leading-relaxed italic max-w-sm">
+                            <CMSText as="p" className="text-text-muted text-lg font-light leading-relaxed italic max-w-sm">
                                 {cms.gallery_history_desc || "Setiap maha karya memiliki awal. Menelusuri jejak transformasi dari sekadar mimpi menjadi kedaulatan seni yang mutlak."}
-                            </p>
+                            </CMSText>
                         </div>
 
                         <div className="lg:w-2/3 space-y-24">
@@ -101,10 +104,10 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
                                         <div className="w-4 h-4 rounded-full bg-gold-500 group-hover:scale-150 transition-transform duration-500 shadow-[0_0_15px_#D4AF37]"></div>
                                         <div className="w-[1px] h-full bg-white/10 mt-4 group-last:hidden"></div>
                                     </div>
-                                    <div className="pb-16 border-b border-white/5 group-last:border-none">
+                                    <div className="pb-16 border-b border-border-main group-last:border-none">
                                         <span className="text-gold-500 font-black text-2xl mb-4 block tracking-widest">{item.year}</span>
-                                        <h3 className="text-white text-3xl font-serif italic mb-4">{item.event}</h3>
-                                        <p className="text-text-muted text-lg font-light leading-relaxed">{item.detail}</p>
+                                        <CMSText as="h3" className="text-text-main text-3xl font-serif italic mb-4">{item.event}</CMSText>
+                                        <CMSText as="p" className="text-text-muted text-lg font-light leading-relaxed">{item.detail}</CMSText>
                                     </div>
                                 </div>
                             ))}
@@ -114,10 +117,10 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
             </section>
 
             {/* --- SECTION: THE COLLECTION (GALLERY) --- */}
-            <section className="py-96 bg-black relative">
+            <section className="py-96 bg-surface relative transition-colors duration-500">
                 {/* Background Typography */}
                 <div
-                    className="absolute top-1/4 right-0 text-[35vw] font-black text-white/[0.015] italic leading-none pointer-events-none select-none z-0 uppercase"
+                    className="absolute top-1/4 right-0 text-[35vw] font-black text-text-main/5 italic leading-none pointer-events-none select-none z-0 uppercase"
                     style={{ transform: `translateX(${scrollY * 0.1}px)` }}
                 >
                     COLLECTION
@@ -125,12 +128,12 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
 
                 <div className="container mx-auto px-6 sm:px-12 lg:px-24 relative z-10">
                     <div className="text-center mb-48 reveal">
-                        <span className="text-gold-500 text-[10px] tracking-[2em] uppercase font-black block mb-8">
+                        <CMSText className="text-gold-500 text-[10px] tracking-[2em] uppercase font-black block mb-8">
                             {cms.gallery_archive_badge || "MASTERPIECES"}
-                        </span>
-                        <h2 className="font-serif text-7xl md:text-[10rem] text-white italic leading-none tracking-tighter">
+                        </CMSText>
+                        <CMSText as="h2" className="font-serif text-7xl md:text-[10rem] text-text-main italic leading-none tracking-tighter">
                             {cms.gallery_archive_title || "The Archive"}
-                        </h2>
+                        </CMSText>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-48">
@@ -193,6 +196,7 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
 function MuseumItem({ item, i, scrollY }) {
     const [isHovered, setIsHovered] = useState(false);
     const [cardMousePos, setCardMousePos] = useState({ x: 0, y: 0 });
+    const { t } = useLang();
 
     const handleMouseMove = (e) => {
         const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -217,14 +221,14 @@ function MuseumItem({ item, i, scrollY }) {
             <div className="group relative">
                 {/* 3D Frame */}
                 <div
-                    className="p-4 bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_40px_100px_rgba(0,0,0,0.8)] transition-transform duration-700 ease-out"
+                    className="p-4 bg-surface-lighter border border-border-main backdrop-blur-md shadow-2xl transition-transform duration-700 ease-out"
                     style={{
                         transform: isHovered
                             ? `perspective(1500px) rotateX(${cardMousePos.y * -20}deg) rotateY(${cardMousePos.x * 20}deg) scale3d(1.05, 1.05, 1.05)`
                             : 'perspective(1500px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
                     }}
                 >
-                    <div className="relative aspect-[4/5] overflow-hidden bg-black">
+                    <div className="relative aspect-[4/5] overflow-hidden bg-surface-darker">
                         <img
                             src={item.img}
                             className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-[2s] ease-out scale-110 group-hover:scale-125"
@@ -239,18 +243,18 @@ function MuseumItem({ item, i, scrollY }) {
 
                         {/* Museum Plaque Overlay */}
                         <div className="absolute inset-x-8 bottom-8 p-8 bg-black/60 backdrop-blur-xl border-l-2 border-gold-500 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-8 group-hover:translate-y-0">
-                            <span className="text-gold-500 text-[8px] tracking-[1em] uppercase block mb-2">{item.category}</span>
-                            <h4 className="text-white text-3xl font-serif italic mb-4">{item.title}</h4>
-                            <p className="text-white/60 text-[10px] uppercase tracking-widest font-bold leading-relaxed">
+                            <CMSText className="text-gold-500 text-[8px] tracking-[1em] uppercase block mb-2">{item.category}</CMSText>
+                            <CMSText as="h4" className="text-white text-3xl font-serif italic mb-4">{item.title}</CMSText>
+                            <CMSText as="p" className="text-white/60 text-[10px] uppercase tracking-widest font-bold leading-relaxed">
                                 {item.desc}
-                            </p>
+                            </CMSText>
                         </div>
                     </div>
                 </div>
 
                 {/* Floating Decoration */}
                 <div className="absolute -top-8 -right-8 w-16 h-16 border-t-2 border-r-2 border-gold-500 group-hover:scale-125 transition-transform duration-700"></div>
-                <div className="absolute -bottom-8 -left-8 w-16 h-16 border-b-2 border-l-2 border-white/20 group-hover:scale-125 transition-transform duration-700"></div>
+                <div className="absolute -bottom-8 -left-8 w-16 h-16 border-b-2 border-l-2 border-border-main group-hover:scale-125 transition-transform duration-700"></div>
             </div>
         </div>
     );

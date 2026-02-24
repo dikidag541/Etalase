@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { usePage, Link } from '@inertiajs/react'
+import { useLang } from '@/lib/LangContext'
 
 export default function MainLayout({ children, auth }) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
-
-  const [lang, setLang] = useState('ID');
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const { lang, setLang, t } = useLang();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,11 +67,11 @@ export default function MainLayout({ children, auth }) {
 
           {/* Center: Corrected Navigation Links */}
           <div className={`hidden lg:flex items-center gap-10 text-[10px] font-black tracking-[0.25em] uppercase ${isDarkMode ? 'text-white/60' : 'text-black/60'}`}>
-            <Link href="/" className="hover:text-gold-500 transition-colors">Home</Link>
-            <Link href="/about" className="hover:text-gold-500 transition-colors">About</Link>
-            <Link href="/articles" className="hover:text-gold-500 transition-colors">Articles</Link>
-            <Link href="/gallery" className="hover:text-gold-500 transition-colors">Gallery</Link>
-            <Link href="/team" className="hover:text-gold-500 transition-colors">Pengurus</Link>
+            <Link href="/" className="hover:text-gold-500 transition-colors">{t('nav_home')}</Link>
+            <Link href="/about" className="hover:text-gold-500 transition-colors">{t('nav_about')}</Link>
+            <Link href="/articles" className="hover:text-gold-500 transition-colors">{t('nav_articles')}</Link>
+            <Link href="/gallery" className="hover:text-gold-500 transition-colors">{t('nav_gallery')}</Link>
+            <Link href="/team" className="hover:text-gold-500 transition-colors">{t('nav_team')}</Link>
           </div>
 
           {/* Right: Actions */}
@@ -87,12 +87,10 @@ export default function MainLayout({ children, auth }) {
                   {lang === 'ID' ? (
                     <div className="absolute top-1/2 left-0 w-full h-1/2 bg-white"></div>
                   ) : (
-                    <div className="w-full h-full bg-blue-900 flex flex-col">
-                      <div className="flex h-1/2">
-                        <div className="w-1/2 bg-white"></div>
-                        <div className="w-1/2 bg-red-600"></div>
-                      </div>
-                      <div className="h-1/2 bg-white"></div>
+                    <div className="w-full h-full bg-red-600 flex flex-col">
+                      <div className="absolute top-1/2 left-0 w-full h-1/2 bg-white"></div>
+                      {/* Optional decorative marker for Javanese if needed */}
+                      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gold-500/30"></div>
                     </div>
                   )}
                 </div>
@@ -103,13 +101,13 @@ export default function MainLayout({ children, auth }) {
               {/* Dropdown Menu */}
               {showLangDropdown && (
                 <div className={`absolute top-full mt-4 right-0 w-32 py-2 rounded-2xl border backdrop-blur-3xl animate-in fade-in zoom-in duration-300 ${isDarkMode ? 'bg-black/90 border-white/10' : 'bg-white/90 border-black/5'}`}>
-                  {['ID', 'EN'].map((l) => (
+                  {['ID', 'JV'].map((l) => (
                     <button
                       key={l}
                       onClick={() => { setLang(l); setShowLangDropdown(false); }}
                       className={`w-full text-left px-6 py-2 text-[10px] font-black tracking-widest uppercase transition-colors ${lang === l ? 'text-gold-500' : isDarkMode ? 'text-white/40 hover:text-white' : 'text-black/40 hover:text-black'}`}
                     >
-                      {l === 'ID' ? 'Bahasa' : 'English'}
+                      {l === 'ID' ? t('lang_id') : t('lang_jv')}
                     </button>
                   ))}
                 </div>
@@ -166,7 +164,7 @@ export default function MainLayout({ children, auth }) {
               <div className="max-w-2xl relative">
                 <span className="absolute -left-12 top-0 text-7xl font-serif text-gold-500/20 italic">"</span>
                 <p className={`text-2xl md:text-3xl font-light leading-snug mb-20 italic tracking-tight ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>
-                  Sebuah wahana transformasi di mana kesenian tradisional bertemu dengan ambisi futuristik. Kita tidak hanya melintas, <span className="text-text-main font-medium">kita meninggalkan jejak rupa yang abadi.</span>
+                  {t('footer_tagline')}
                 </p>
               </div>
               <div className="flex items-center gap-16">

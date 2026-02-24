@@ -23,9 +23,22 @@ export default function Articles({ cms = {}, articles = [] }) {
             <Head title="EDITORIAL | The Sovereign Perspective" />
 
             {/* --- HEADER: EDITORIAL SCALE --- */}
-            <section className="pt-64 pb-32 bg-surface transition-colors duration-500 overflow-hidden relative border-b border-border-main">
-                <div className="absolute inset-x-0 bottom-0 text-[25vw] font-serif text-text-main/5 pointer-events-none select-none italic text-center leading-[0.5]">{cms.articles_bg_text || 'EDITORIAL'}</div>
-                <div className="max-w-[1400px] mx-auto px-12 sm:px-24 relative z-10">
+            <section className="relative pt-64 pb-32 bg-surface overflow-hidden border-b border-border-main min-h-[40vh] flex items-center">
+                {/* Hero Image Background */}
+                {cms.articles_hero_image && (
+                    <div className="absolute inset-0 z-0">
+                        <img
+                            src={cms.articles_hero_image}
+                            className="w-full h-full object-cover opacity-20 grayscale brightness-50"
+                            alt="Header Background"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface opacity-80"></div>
+                    </div>
+                )}
+
+                <div className="absolute inset-x-0 bottom-0 text-[25vw] font-serif text-text-main/5 pointer-events-none select-none italic text-center leading-[0.5] z-0">{cms.articles_bg_text || 'EDITORIAL'}</div>
+
+                <div className="max-w-[1400px] mx-auto px-12 sm:px-24 relative z-10 w-full">
                     <div className="reveal">
                         <span className="text-gold-500 text-xs tracking-[1.5em] uppercase block mb-8 font-black">{cms.articles_badge || 'Official Publication • Perspectives'}</span>
                         <h1 className="font-serif text-7xl md:text-9xl text-text-main italic tracking-tighter">{cms.articles_title_1 || 'Esensi'} <br /><span className="not-italic metallic-gold">{cms.articles_title_2 || 'Kesenian'}</span></h1>
@@ -66,7 +79,7 @@ export default function Articles({ cms = {}, articles = [] }) {
                                         href={`/articles/${article.slug || i}`}
                                         className="inline-block px-12 py-5 border border-gold-500 text-gold-500 text-[10px] tracking-[1em] uppercase hover:bg-gold-500 hover:text-black transition-all duration-700"
                                     >
-                                        Read Manifest
+                                        {cms.articles_cta_text || 'Read Manifest'}
                                     </Link>
                                 </div>
                             </div>

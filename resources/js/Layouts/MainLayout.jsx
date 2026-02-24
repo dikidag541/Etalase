@@ -190,18 +190,15 @@ export default function MainLayout({ children, auth }) {
                   ))}
                 </ul>
               </div>
-              <div className="bg-gold-500/[0.02] p-12 rounded-3xl border border-white/[0.05]">
-                <h4 className={`text-[12px] font-black uppercase tracking-[0.8em] mb-16 ${isDarkMode ? 'text-white' : 'text-black'}`}>
-                  MILIS SOVEREIGN
+              <div className="bg-gold-500/[0.02] p-12 rounded-3xl border border-white/[0.05] flex flex-col justify-center">
+                <h4 className={`text-[12px] font-black uppercase tracking-[0.8em] mb-10 ${isDarkMode ? 'text-white' : 'text-black'}`}>
+                  FILOSOFI KARYA
                 </h4>
-                <p className={`text-lg mb-12 font-light leading-relaxed tracking-tight ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>Bergabunglah dalam lingkaran eksklusif kurasi seni dan budaya kami.</p>
-                <div className="relative group/input mt-auto">
-                  <input
-                    type="text"
-                    placeholder="Signature E-mail"
-                    className={`w-full border-b-2 py-6 bg-transparent text-xl tracking-tighter focus:outline-none transition-all ${isDarkMode ? 'border-white/10 text-white focus:border-gold-500' : 'border-black/10 text-black focus:border-black'}`}
-                  />
-                  <button className="absolute right-0 top-1/2 -translate-y-1/2 text-[12px] font-black uppercase tracking-[0.5em] metallic-gold group-hover/input:translate-x-2 transition-all">Join</button>
+                <div className="relative">
+                  <p className={`text-lg md:text-xl font-light leading-relaxed tracking-tight ${isDarkMode ? 'text-text-muted' : 'text-gray-600'}`}>
+                    "Seni bukan sekadar hiasan, melainkan ekspresi jiwa yang melampaui batas. Di Etalase, setiap goresan adalah cerita, dan setiap warna adalah nafas kehidupan."
+                  </p>
+                  <div className={`w-16 h-[1px] mt-8 ${isDarkMode ? 'bg-gold-500/30' : 'bg-gold-500/50'}`}></div>
                 </div>
               </div>
             </div>

@@ -20,7 +20,7 @@ export default function ArticleDetail({ cms = {}, article }) {
                     <div className="absolute bottom-0 left-0 w-full py-20">
                         <div className="max-w-4xl mx-auto px-4">
                             <Link href="/articles" className="text-gold-500 text-[10px] uppercase tracking-[0.4em] mb-8 inline-block border-b border-gold-500/30 pb-2 hover:border-gold-500 transition-all">
-                                ← Kembali ke Editorial
+                                {cms.article_detail_back_text || '← Kembali ke Editorial'}
                             </Link>
                             <div className="flex items-center gap-6 mb-6">
                                 <span className="bg-etalase-red px-3 py-1 text-[10px] uppercase tracking-widest text-white">{article.category}</span>
@@ -37,7 +37,7 @@ export default function ArticleDetail({ cms = {}, article }) {
                                 </div>
                                 <div>
                                     <span className="block text-text-main text-xs tracking-widest uppercase">{article.author || 'Tim Redaksi Etalase'}</span>
-                                    <span className="block text-text-muted text-[10px] tracking-widest uppercase">Penulis Konten</span>
+                                    <span className="block text-text-muted text-[10px] tracking-widest uppercase">{cms.article_detail_author_role || 'Penulis Konten'}</span>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ export default function ArticleDetail({ cms = {}, article }) {
                                 ))}
                             </div>
                             <div className="flex items-center gap-6">
-                                <span className="text-[10px] uppercase tracking-[0.4em] text-text-muted">Bagikan</span>
+                                <span className="text-[10px] uppercase tracking-[0.4em] text-text-muted">{cms.article_detail_share_text || 'Bagikan'}</span>
                                 <div className="flex gap-4">
                                     <button className="w-8 h-8 rounded-full border border-border-main flex items-center justify-center text-text-muted hover:bg-text-main hover:text-surface transition-all">I</button>
                                     <button className="w-8 h-8 rounded-full border border-border-main flex items-center justify-center text-text-muted hover:bg-text-main hover:text-surface transition-all">F</button>
@@ -80,7 +80,7 @@ export default function ArticleDetail({ cms = {}, article }) {
                         </div>
                         <div>
                             <h4 className="font-serif text-2xl text-text-main mb-3">{article.author || 'UKM Kesenian Etalase'}</h4>
-                            <p className="text-text-muted font-light leading-relaxed mb-6">Berkontribusi dalam mendokumentasikan setiap denyut kesenian di Etalase. Sebuah narasi yang dibangun dari kegelisahan dan kreativitas tanpa batas.</p>
+                            <p className="text-text-muted font-light leading-relaxed mb-6">{cms.article_detail_author_desc || 'Berkontribusi dalam mendokumentasikan setiap denyut kesenian di Etalase. Sebuah narasi yang dibangun dari kegelisahan dan kreativitas tanpa batas.'}</p>
                             <Link href="/about" className="text-gold-500 text-xs uppercase tracking-[0.3em] font-bold border-b border-gold-500/30 pb-1">Selengkapnya</Link>
                         </div>
                     </div>
@@ -89,9 +89,9 @@ export default function ArticleDetail({ cms = {}, article }) {
                 {/* Related / Next Article */}
                 <section className="py-32 bg-surface transition-colors duration-500">
                     <div className="max-w-7xl mx-auto px-4 text-center">
-                        <span className="text-text-muted text-[10px] uppercase tracking-[0.5em] mb-4 block">Selanjutnya</span>
-                        <h5 className="font-serif text-3xl md:text-5xl text-text-main mb-10">Membangun Ekosistem Kesenian Mahasiswa</h5>
-                        <Link href="/articles/3" className="px-12 py-5 bg-gold-500 text-black font-bold uppercase text-xs tracking-widest hover:bg-text-main hover:text-surface transition-all inline-block">Baca Artikel Ini</Link>
+                        <span className="text-text-muted text-[10px] uppercase tracking-[0.5em] mb-4 block">{cms.article_detail_next_label || 'Selanjutnya'}</span>
+                        <h5 className="font-serif text-3xl md:text-5xl text-text-main mb-10">{cms.article_detail_next_title || 'Membangun Ekosistem Kesenian Mahasiswa'}</h5>
+                        <Link href="/articles" className="px-12 py-5 bg-gold-500 text-black font-bold uppercase text-xs tracking-widest hover:bg-text-main hover:text-surface transition-all inline-block">{cms.article_detail_next_cta || 'Baca Artikel Ini'}</Link>
                     </div>
                 </section>
             </article>

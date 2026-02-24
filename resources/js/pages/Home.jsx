@@ -34,7 +34,6 @@ export default function Home({ cms = {}, divisions = [] }) {
       <div className="fixed inset-0 pointer-events-none gold-leaf-texture opacity-[0.02] z-[998]"></div>
 
       {/* --- HERO SECTION: CINEMATIC MASTERPIECE --- */}
-      {/* --- HERO SECTION: CINEMATIC MASTERPIECE --- */}
       <section className="relative min-h-[120vh] bg-surface z-[10]">
         {/* Top Edge Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-blue opacity-50 z-20 pointer-events-none"></div>
@@ -221,12 +220,17 @@ export default function Home({ cms = {}, divisions = [] }) {
       </section>
 
       {/* --- FASET KESENIAN: GRID OF EXCELLENCE --- */}
-      <section className="relative bg-surface py-40 z-[40]">
+      <section className="relative bg-surface py-60 z-[40] overflow-hidden">
         {/* Section Transition Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-red opacity-40 z-20 pointer-events-none"></div>
+
+        {/* Animated Background Blobs */}
+        <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[150px] animate-pulse pointer-events-none"></div>
+        <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-etalase-red/10 rounded-full blur-[120px] animate-pulse delay-1000 pointer-events-none"></div>
+
         <div className="absolute inset-0 gold-leaf-texture opacity-5"></div>
 
-        <div className="max-w-[1400px] mx-auto px-6 text-center mb-48 reveal">
+        <div className="max-w-[1400px] mx-auto px-6 text-center mb-48 reveal relative z-10">
           <span className="text-etalase-red text-sm tracking-[2em] uppercase font-black mb-12 block">{cms.faset_badge || 'Faset Kesenian'}</span>
           <h2 className="text-7xl md:text-[10rem] font-serif text-text-main italic leading-none tracking-tighter">{cms.faset_title || 'Diverse Expression'}</h2>
         </div>
@@ -244,67 +248,14 @@ export default function Home({ cms = {}, divisions = [] }) {
 
           <div className="flex flex-wrap -mx-4">
             {(divisions && divisions.length > 0 ? divisions : [
-              { name: 'DANCE', image_url: '/images/dance_performance.png' },
-              { name: 'THEATER', image_url: '/images/theater_scene.png' },
-              { name: 'MUSIC', image_url: '/images/hero_carnival.png' },
-              { name: 'COSTUME', image_url: '/images/costume_detail.png' },
-              { name: 'FILM', image_url: '/images/theater_scene.png' },
-              { name: 'FINE ART', image_url: '/images/costume_detail.png' }
-            ]).map((faset, i) => {
-              const layouts = [
-                { offset: 'mt-0', width: 'w-full md:w-7/12', speed: 0.05 },
-                { offset: 'mt-24 md:mt-48', width: 'w-full md:w-4/12 ml-auto', speed: 0.1 },
-                { offset: '-mt-12 md:-mt-32', width: 'w-full md:w-5/12', speed: 0.03 },
-                { offset: 'mt-12 md:mt-24', width: 'w-full md:w-6/12 ml-[5%]', speed: 0.08 },
-                { offset: 'mt-0 md:-mt-64 mr-auto', width: 'w-full md:w-4/12 ml-[10%]', speed: 0.12 },
-                { offset: 'mt-24 md:mt-12 ml-auto', width: 'w-full md:w-7/12', speed: 0.05 }
-              ];
-              const layout = layouts[i % layouts.length];
-
-              return (
-                <div
-                  key={i}
-                  className={`${layout.width} px-4 mb-24 relative z-10`}
-                >
-                  <div
-                    className={`group relative aspect-[4/5] overflow-hidden ornamental-border bg-black reveal ${layout.offset}`}
-                    style={{ transitionDelay: `${i * 150}ms` }}
-                  >
-                    {/* Background Image with Ultra-Slow Ken Burns */}
-                    <img
-                      src={faset.image_url || faset.img}
-                      className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-[3s] ease-out ken-burns"
-                      alt={faset.name}
-                    />
-
-                    {/* Majestic Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:from-etalase-red/60 transition-all duration-1000"></div>
-                    <div className="absolute inset-0 majestic-aura opacity-0 group-hover:opacity-40 transition-opacity duration-1000 pointer-events-none"></div>
-
-                    {/* Content Reveal */}
-                    <div className="absolute inset-0 p-12 flex flex-col justify-end">
-                      <div className="overflow-hidden">
-                        <span className="text-gold-500 text-[9px] tracking-[0.8em] uppercase font-black block translate-y-full group-hover:translate-y-0 transition-transform duration-700">
-                          FASET 0{i + 1}
-                        </span>
-                      </div>
-                      <div className="h-px w-0 group-hover:w-24 bg-gold-500/30 my-4 transition-all duration-1000 delay-300"></div>
-                      <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter transition-all duration-1000 group-hover:text-gold-500">
-                        {faset.short_name || faset.name}
-                      </h3>
-                    </div>
-
-                    {/* Individual Glyph Parallax */}
-                    <div
-                      className="absolute -top-10 -right-10 text-[15rem] font-black text-white/[0.02] pointer-events-none select-none italic"
-                      style={{ transform: `translateY(${scrollY * layout.speed}px)` }}
-                    >
-                      {(faset.short_name || faset.name || 'E')[0]}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+              { short_name: 'TARI', image_url: '/images/dance_performance.png' },
+              { short_name: 'TEATER', image_url: '/images/IMG_5939.JPG' },
+              { short_name: 'MUSIK', image_url: '/images/IMG_5942.JPG' },
+              { short_name: 'FOTOGRAFI', image_url: '/images/IMG_6046.JPG' },
+              { short_name: 'PSM', image_url: '/images/IMG_0266.JPG' }
+            ]).map((faset, i) => (
+              <DivisionCard key={i} faset={faset} i={i} scrollY={scrollY} isDarkMode={document.documentElement.classList.contains('dark')} />
+            ))}
           </div>
         </div>
       </section>
@@ -421,6 +372,99 @@ function ParadeItem({ item, scrollY, idx }) {
               : 'translate3d(0, 0, 0)'
           }}
         />
+      </div>
+    </div>
+  );
+}
+
+function DivisionCard({ faset, i, scrollY, isDarkMode }) {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left) / width - 0.5;
+    const y = (e.clientY - top) / height - 0.5;
+    setMousePos({ x, y });
+  };
+
+  const layouts = [
+    { offset: 'mt-0', width: 'w-full md:w-7/12', speed: 0.05 },
+    { offset: 'mt-24 md:mt-48', width: 'w-full md:w-4/12 ml-auto', speed: 0.1 },
+    { offset: '-mt-12 md:-mt-32', width: 'w-full md:w-5/12', speed: 0.03 },
+    { offset: 'mt-12 md:mt-24', width: 'w-full md:w-6/12 ml-[5%]', speed: 0.08 },
+    { offset: 'mt-0 md:-mt-64 mr-auto', width: 'w-full md:w-4/12 ml-[10%]', speed: 0.12 },
+    { offset: 'mt-24 md:mt-12 ml-auto', width: 'w-full md:w-7/12', speed: 0.05 }
+  ];
+
+  const layout = layouts[i % layouts.length];
+
+  return (
+    <div
+      className={`${layout.width} px-4 mb-32 relative z-10 reveal ${layout.offset}`}
+      style={{ transitionDelay: `${i * 150}ms` }}
+    >
+      <div
+        className="group relative aspect-[4/5] overflow-hidden ornamental-border bg-black transition-transform duration-500 ease-out"
+        style={{
+          transform: isHovered
+            ? `perspective(1000px) rotateX(${mousePos.y * -12}deg) rotateY(${mousePos.x * 12}deg) scale3d(1.05, 1.05, 1.05)`
+            : `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => {
+          setIsHovered(false);
+          setMousePos({ x: 0, y: 0 });
+        }}
+      >
+        {/* Background Image with Slow Ken Burns */}
+        <img
+          src={faset.image_url || faset.image_path || faset.img || '/images/placeholder-division.png'}
+          className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:opacity-90 transition-all duration-[3s] ease-out ken-burns"
+          alt={faset.short_name || faset.name || 'Division Image'}
+          style={{
+            transform: isHovered
+              ? `scale(1.1) translate3d(${mousePos.x * 25}px, ${mousePos.y * 25}px, 0)`
+              : 'scale(1) translate3d(0, 0, 0)'
+          }}
+          onError={(e) => {
+            e.target.src = '/images/placeholder-division.png';
+          }}
+        />
+
+        {/* Dynamic Number Overlay */}
+        <div className={`absolute top-8 left-8 text-8xl font-black italic select-none pointer-events-none transition-all duration-700 ${isHovered ? 'opacity-30 scale-125 translate-x-6' : 'opacity-10 scale-100'} text-gold-500 dark:text-white`}>
+          0{i + 1}
+        </div>
+
+        {/* Majestic Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:from-etalase-red/50 transition-all duration-1000"></div>
+        <div className="absolute inset-0 majestic-aura opacity-0 group-hover:opacity-50 transition-opacity duration-1000 pointer-events-none"></div>
+
+        {/* Content Reveal */}
+        <div className="absolute inset-0 p-12 flex flex-col justify-end pointer-events-none">
+          <div className="overflow-hidden">
+            <span className="text-gold-500 text-[10px] tracking-[0.8em] uppercase font-black block translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+              EXPLORE FASET
+            </span>
+          </div>
+          <div className="h-px w-0 group-hover:w-32 bg-gold-500/30 my-6 transition-all duration-1000 delay-300"></div>
+          <h3 className="text-white text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter transition-all duration-1000 group-hover:text-gold-500 group-hover:translate-x-2">
+            {faset.short_name || faset.name || 'FASET'}
+          </h3>
+          <p className="text-white/0 group-hover:text-white/60 text-[10px] tracking-widest uppercase font-bold mt-4 transition-all duration-700 delay-500 max-w-xs leading-relaxed">
+            Menyelami kedalaman estetika {(faset.name || 'seni').toLowerCase()} etalase yang monumental.
+          </p>
+        </div>
+
+        {/* Individual Glyph Parallax */}
+        <div
+          className="absolute -top-10 -right-10 text-[20rem] font-black text-white/[0.02] pointer-events-none select-none italic"
+          style={{ transform: `translateY(${scrollY * layout.speed}px)` }}
+        >
+          {(faset.short_name || faset.name || 'E')[0]}
+        </div>
       </div>
     </div>
   );

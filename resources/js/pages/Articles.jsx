@@ -36,11 +36,11 @@ export default function Articles({ cms = {}, articles = [] }) {
             />
 
             {/* --- LIST: MAXIMALIST CARDS --- */}
-            <section className="py-96 bg-surface transition-colors duration-500">
-                <div className="max-w-[1400px] mx-auto px-12 sm:px-24">
-                    <div className="space-y-64">
+            <section className="py-24 md:py-64 lg:py-96 bg-surface transition-colors duration-500">
+                <div className="max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-24">
+                    <div className="space-y-24 md:space-y-48 lg:space-y-64">
                         {validArticles.map((article, i) => (
-                            <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-24 items-center reveal`}>
+                            <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 md:gap-24 items-center reveal`}>
                                 {/* Image Part */}
                                 <div className="lg:col-span-12 lg:w-3/5 relative group">
                                     <div className="ornamental-border p-2 bg-surface">
@@ -58,7 +58,7 @@ export default function Articles({ cms = {}, articles = [] }) {
                                         <span>•</span>
                                         <span>{article.author || 'Redaksi Etalase'}</span>
                                     </div>
-                                    <CMSText as="h2" className="font-serif text-5xl md:text-7xl text-text-main italic tracking-tighter uppercase leading-none">
+                                    <CMSText as="h2" className="font-serif text-4xl md:text-5xl lg:text-7xl text-text-main italic tracking-tighter uppercase leading-none">
                                         {article.title}
                                     </CMSText>
                                     <CMSText as="p" className="text-text-muted text-xl font-light leading-relaxed">

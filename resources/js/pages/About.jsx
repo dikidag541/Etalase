@@ -35,8 +35,8 @@ export default function About({ cms = {} }) {
             />
 
             {/* --- SECTION: THE ORIGIN (STORYTELLING) --- */}
-            <section className="py-96 bg-surface relative transition-colors duration-500">
-                <div className="max-w-[1400px] mx-auto px-12 sm:px-24">
+            <section className="py-24 md:py-64 lg:py-96 bg-surface relative transition-colors duration-500">
+                <div className="max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-24">
                     <div className="grid lg:grid-cols-12 gap-24 items-center">
                         <div className="lg:col-span-12 mb-32 curtain-reveal">
                             <CMSText className="text-gold-500 text-xs tracking-[1em] uppercase block mb-12 font-black">{cms.philosophy_badge || 'Misi & Filosofi'}</CMSText>
@@ -46,7 +46,7 @@ export default function About({ cms = {} }) {
                         </div>
 
                         <div className="lg:col-span-7 reveal">
-                            <div className="space-y-16 text-text-muted text-2xl font-light leading-relaxed">
+                            <div className="space-y-8 md:space-y-16 text-text-muted text-lg md:text-2xl font-light leading-relaxed">
                                 <CMSText as="p">
                                     {cms.mission_text || 'UKM Kesenian Etalase Universitas Jember bukan sekadar wadah organisasi, melainkan sebuah wahana transformasi di mana kesenian tradisional bertemu dengan ambisi futuristik.'}
                                 </CMSText>
@@ -67,16 +67,16 @@ export default function About({ cms = {} }) {
             </section>
 
             {/* --- SECTION: THE PILLARS (VALUE) --- */}
-            <section className="py-96 bg-surface border-y border-border-main relative transition-colors duration-500 overflow-hidden">
+            <section className="py-24 md:py-64 lg:py-96 bg-surface border-y border-border-main relative transition-colors duration-500 overflow-hidden">
                 <div className="absolute inset-0 gold-leaf-texture opacity-5"></div>
                 <div className="container mx-auto px-12">
-                    <div className="grid md:grid-cols-3 gap-24">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-24">
                         {[
                             { title: cms.pillar_1_title || 'Inovasi', desc: cms.pillar_1_desc || 'Mendobrak batas kreativitas tanpa melupakan akar budaya.' },
                             { title: cms.pillar_2_title || 'Kolaborasi', desc: cms.pillar_2_desc || 'Sinergi lintas faset seni untuk menciptakan pengalaman imersif.' },
                             { title: cms.pillar_3_title || 'Kedaulatan', desc: cms.pillar_3_desc || 'Memberikan ruang bagi setiap seniman untuk menguasai panggungnya.' }
                         ].map((pillar, i) => (
-                            <div key={i} className="group p-20 border border-gold-500/10 hover:border-gold-500 transition-all duration-700 reveal">
+                            <div key={i} className="group p-10 md:p-20 border border-gold-500/10 hover:border-gold-500 transition-all duration-700 reveal">
                                 <span className="font-serif text-8xl text-gold-500/10 mb-12 block transition-colors group-hover:text-gold-500">0{i + 1}</span>
                                 <CMSText as="h4" className="font-serif text-4xl text-text-main italic mb-8 uppercase tracking-widest">{pillar.title}</CMSText>
                                 <CMSText as="p" className="text-text-muted text-lg font-light leading-relaxed group-hover:text-text-main transition-colors">{pillar.desc}</CMSText>
@@ -87,16 +87,16 @@ export default function About({ cms = {} }) {
             </section>
 
             {/* --- FINAL: THE CALL --- */}
-            <section className="py-96 bg-surface flex flex-col items-center justify-center text-center transition-colors duration-500">
+            <section className="py-24 md:py-64 lg:py-96 bg-surface flex flex-col items-center justify-center text-center transition-colors duration-500">
                 <div className="reveal max-w-4xl px-8">
-                    <CMSText as="h3" className="font-serif text-6xl md:text-8xl text-text-main italic mb-20">
+                    <CMSText as="h3" className="font-serif text-4xl md:text-6xl lg:text-8xl text-text-main italic mb-12 md:mb-20">
                         "{cms.about_quote || 'Jadilah bagian dari revolusi rupa dan raga di panggung Etalase.'}"
                     </CMSText>
-                    <div className="flex flex-col sm:flex-row gap-12 justify-center mt-20">
-                        <button className="px-16 py-6 bg-gold-500 text-black font-black text-xs tracking-[1em] uppercase hover:bg-white transition-all transform hover:scale-105 duration-500">
+                    <div className="flex flex-col sm:flex-row gap-6 md:gap-12 justify-center mt-12 md:mt-20">
+                        <button className="px-10 md:px-16 py-5 md:py-6 bg-gold-500 text-black font-black text-xs tracking-[1em] uppercase hover:bg-white transition-all transform hover:scale-105 duration-500">
                             {t('about_join_parade')}
                         </button>
-                        <button className="px-16 py-6 border border-gold-500 text-gold-500 font-black text-xs tracking-[1em] uppercase hover:bg-gold-500 hover:text-black transition-all duration-500">
+                        <button className="px-10 md:px-16 py-5 md:py-6 border border-gold-500 text-gold-500 font-black text-xs tracking-[1em] uppercase hover:bg-gold-500 hover:text-black transition-all duration-500">
                             {t('about_contact_us')}
                         </button>
                     </div>

@@ -133,12 +133,12 @@ export default function Home({ cms = {}, divisions = [] }) {
       </section>
 
       {/* --- PARADE SECTION: STAGGERED VISUAL FLOW --- */}
-      <section className="relative bg-surface py-40 z-[20]">
+      <section className="relative bg-surface py-20 md:py-40 z-[20]">
         {/* Section Transition Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-red opacity-40 z-20 pointer-events-none"></div>
         <div className="absolute inset-0 gold-leaf-texture opacity-[0.03]"></div>
 
-        <div className="max-w-[1800px] mx-auto px-6 lg:px-12 grid lg:grid-cols-12 gap-24 items-start relative z-10">
+        <div className="max-w-[1800px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24 items-start relative z-10">
           {/* Left: Sticky Info */}
           <div className="lg:col-span-5 lg:sticky lg:top-48">
             <div className="reveal">
@@ -147,7 +147,7 @@ export default function Home({ cms = {}, divisions = [] }) {
                 <span className="text-gold-500 text-sm tracking-[1.5em] uppercase font-black">{cms.parade_badge || 'Dynamic Parade'}</span>
               </div>
 
-              <h2 className="font-serif text-[8vw] lg:text-[10rem] leading-[0.8] text-text-main italic tracking-tighter mb-16 select-none">
+              <h2 className="font-serif text-[14vw] md:text-[8vw] lg:text-[10rem] leading-[0.8] text-text-main italic tracking-tighter mb-8 md:mb-16 select-none">
                 <span className="block mb-6">{cms.manifesto_title_1 || 'The Grand'}</span>
                 <span className="not-italic metallic-gold block filter drop-shadow-[0_10px_40px_rgba(212,175,55,0.5)]">
                   {cms.manifesto_title_2 || 'Etalase'}
@@ -158,13 +158,13 @@ export default function Home({ cms = {}, divisions = [] }) {
                 {cms.manifesto_desc || 'Setiap langkah adalah narasi, setiap kostum adalah prasasti. Kita tidak hanya melintas, kita meninggalkan jejak rupa yang abadi.'}
               </CMSText>
 
-              <div className="flex gap-16">
+              <div className="flex gap-8 md:gap-16">
                 <div>
-                  <span className="block text-6xl font-black text-text-main italic">{cms.parade_stat_1_val || '12+'}</span>
+                  <span className="block text-4xl md:text-6xl font-black text-text-main italic">{cms.parade_stat_1_val || '12+'}</span>
                   <CMSText className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_1_label || 'Fase'}</CMSText>
                 </div>
                 <div>
-                  <span className="block text-6xl font-black text-text-main italic">{cms.parade_stat_2_val || '150+'}</span>
+                  <span className="block text-4xl md:text-6xl font-black text-text-main italic">{cms.parade_stat_2_val || '150+'}</span>
                   <CMSText className="text-gold-500/50 text-[10px] uppercase tracking-[0.4em] font-bold">{cms.parade_stat_2_label || 'Kolektif'}</CMSText>
                 </div>
               </div>
@@ -172,7 +172,7 @@ export default function Home({ cms = {}, divisions = [] }) {
           </div>
 
           {/* Right: The Parade (Staggered Images) */}
-          <div className="lg:col-span-7 grid grid-cols-2 gap-12 pt-24 lg:pt-32">
+          <div className="lg:col-span-7 grid grid-cols-2 gap-6 md:gap-12 pt-8 lg:pt-32">
             {[
               { src: cms.parade_image_1 || '/images/Salinan Ave 4 cymk.webp', delay: '0', speed: 0.1 },
               { src: cms.parade_image_2 || '/images/IMG_6046 (1).JPG', delay: '300ms', speed: 0.02, margin: 'mt-64' },
@@ -194,7 +194,7 @@ export default function Home({ cms = {}, divisions = [] }) {
       </section>
 
       {/* --- MASTERPIECE SECTION: CINEMATIC QUOTE --- */}
-      <section className="relative bg-surface py-60 flex items-center justify-center z-[30]">
+      <section className="relative bg-surface py-24 md:py-48 lg:py-60 flex items-center justify-center z-[30]">
         {/* Section Transition Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-blue opacity-30 z-20 pointer-events-none"></div>
         <div className="absolute inset-0 z-0">
@@ -221,7 +221,7 @@ export default function Home({ cms = {}, divisions = [] }) {
       </section>
 
       {/* --- FASET KESENIAN: GRID OF EXCELLENCE --- */}
-      <section className="relative bg-surface py-60 z-[40] overflow-hidden">
+      <section className="relative bg-surface py-24 md:py-48 lg:py-60 z-[40] overflow-hidden">
         {/* Section Transition Glow */}
         <div className="absolute top-0 left-0 w-full h-96 edge-glow-red opacity-40 z-20 pointer-events-none"></div>
 
@@ -233,7 +233,7 @@ export default function Home({ cms = {}, divisions = [] }) {
 
         <div className="max-w-[1400px] mx-auto px-6 text-center mb-48 reveal relative z-10">
           <span className="text-etalase-red text-sm tracking-[2em] uppercase font-black mb-12 block">{cms.faset_badge || 'Faset Kesenian'}</span>
-          <h2 className="text-7xl md:text-[10rem] font-serif text-text-main italic leading-none tracking-tighter">{cms.faset_title || 'Diverse Expression'}</h2>
+          <h2 className="text-5xl md:text-7xl lg:text-[10rem] font-serif text-text-main italic leading-none tracking-tighter">{cms.faset_title || 'Diverse Expression'}</h2>
         </div>
 
         {/* STAGGERED ORGANIC LAYOUT */}

@@ -79,12 +79,12 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
             />
 
             {/* --- SECTION: THE HISTORY (TIMELINE) --- */}
-            <section className="py-64 bg-surface relative overflow-hidden transition-colors duration-500">
+            <section className="py-24 md:py-48 lg:py-64 bg-surface relative overflow-hidden transition-colors duration-500">
                 <div className="absolute inset-0 gold-leaf-texture opacity-5"></div>
 
-                <div className="container mx-auto px-12 lg:px-24">
-                    <div className="flex flex-col lg:flex-row gap-24 items-start">
-                        <div className="lg:w-1/3 sticky top-48 reveal">
+                <div className="container mx-auto px-6 md:px-12 lg:px-24">
+                    <div className="flex flex-col lg:flex-row gap-16 md:gap-24 items-start">
+                        <div className="lg:w-1/3 lg:sticky lg:top-48 reveal">
                             <CMSText className="text-etalase-red text-[10px] tracking-[1em] uppercase font-black block mb-8">
                                 {cms.gallery_history_badge || "CHRONICLES"}
                             </CMSText>
@@ -117,7 +117,7 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
             </section>
 
             {/* --- SECTION: THE COLLECTION (GALLERY) --- */}
-            <section className="py-96 bg-surface relative transition-colors duration-500">
+            <section className="py-24 md:py-64 lg:py-96 bg-surface relative transition-colors duration-500">
                 {/* Background Typography */}
                 <div
                     className="absolute top-1/4 right-0 text-[35vw] font-black text-text-main/5 italic leading-none pointer-events-none select-none z-0 uppercase"
@@ -131,7 +131,7 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
                         <CMSText className="text-gold-500 text-[10px] tracking-[2em] uppercase font-black block mb-8">
                             {cms.gallery_archive_badge || "MASTERPIECES"}
                         </CMSText>
-                        <CMSText as="h2" className="font-serif text-7xl md:text-[10rem] text-text-main italic leading-none tracking-tighter">
+                        <CMSText as="h2" className="font-serif text-5xl md:text-7xl lg:text-[10rem] text-text-main italic leading-none tracking-tighter">
                             {cms.gallery_archive_title || "The Archive"}
                         </CMSText>
                     </div>

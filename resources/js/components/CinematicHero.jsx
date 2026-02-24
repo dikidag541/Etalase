@@ -199,7 +199,7 @@ export default function CinematicHero({
                         <motion.button
                             whileHover={{ scale: 1.05, backgroundColor: "#D4AF37", color: "#000", boxShadow: "0 0 40px rgba(212,175,55,0.3)" }}
                             whileTap={{ scale: 0.96 }}
-                            className="relative group px-16 py-6 bg-gold-500/90 text-black font-black text-[11px] tracking-[1.2em] uppercase transition-all duration-500 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-gold-500/20"
+                            className="relative group px-8 md:px-16 py-4 md:py-6 bg-gold-500/90 text-black font-black text-[10px] md:text-[11px] tracking-[1.2em] uppercase transition-all duration-500 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-gold-500/20"
                         >
                             <span className="relative z-10 ml-[1.2em]">{buttonText}</span>
                             <motion.div

@@ -11,8 +11,8 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
     const pageTabs = Object.keys(settings);
     const collectionTabs = [
         { id: 'members', label: 'Collective Members' },
-        { id: 'articles', label: 'Manuscripts' },
-        { id: 'gallery', label: 'Masterpiece Archive' },
+        { id: 'manuscripts', label: 'Manuscripts' },
+        { id: 'archive', label: 'Masterpiece Archive' },
         { id: 'faset', label: 'Faset Kesenian' }
     ];
     const isCollection = collectionTabs.some(t => t.id === activeTab);
@@ -114,8 +114,8 @@ export default function CMS({ settings, team, articles, gallery, divisions }) {
                         )}
 
                         {activeTab === 'members' && <TeamManager members={team} />}
-                        {activeTab === 'articles' && <ArticleManager articles={articles} />}
-                        {activeTab === 'gallery' && <GalleryManager items={gallery} />}
+                        {activeTab === 'manuscripts' && <ArticleManager articles={articles} />}
+                        {activeTab === 'archive' && <GalleryManager items={gallery} />}
                         {activeTab === 'faset' && <DivisionManager divisions={divisions} />}
                     </div>
                 </main>
@@ -447,6 +447,7 @@ function GalleryManager({ items }) {
     const { data, setData, post, processing, reset, errors } = useForm({
         title: '',
         category: 'PERFORMANCE',
+        description: '',
         image: null
     })
 
@@ -519,6 +520,16 @@ function GalleryManager({ items }) {
                             </div>
                         </div>
                         <div>
+                            <label className="studio-label">Piece Description</label>
+                            <textarea
+                                value={data.description}
+                                onChange={e => setData('description', e.target.value)}
+                                className="studio-input h-24"
+                                placeholder="Museum-style caption..."
+                            />
+                            {errors.description && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.description}</p>}
+                        </div>
+                        <div>
                             <label className="studio-label">Masterpiece Asset</label>
                             <input
                                 type="file"
@@ -562,7 +573,12 @@ function GalleryManager({ items }) {
                                 <button
                                     onClick={() => {
                                         setEditing(item);
-                                        setData({ title: item.title, category: item.category, image: null });
+                                        setData({
+                                            title: item.title,
+                                            category: item.category,
+                                            description: item.description || '',
+                                            image: null
+                                        });
                                         setShowAdd(false);
                                     }}
                                     className="p-3 bg-white/10 hover:bg-white/20 rounded-md transition-all text-white"

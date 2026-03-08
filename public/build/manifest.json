@@ -1,20 +1,20 @@
 {
-  "_CMSText-DmS2kb0z.js": {
-    "file": "assets/CMSText-DmS2kb0z.js",
+  "_CMSText-DSS2uQ5I.js": {
+    "file": "assets/CMSText-DSS2uQ5I.js",
     "name": "CMSText",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_CinematicHero-CPQAAmdf.js": {
-    "file": "assets/CinematicHero-CPQAAmdf.js",
+  "_CinematicHero-1SixFSlG.js": {
+    "file": "assets/CinematicHero-1SixFSlG.js",
     "name": "CinematicHero",
     "imports": [
       "resources/js/app.jsx"
     ]
   },
-  "_MainLayout-BeaPPrdX.js": {
-    "file": "assets/MainLayout-BeaPPrdX.js",
+  "_MainLayout-BUwkrpgd.js": {
+    "file": "assets/MainLayout-BUwkrpgd.js",
     "name": "MainLayout",
     "imports": [
       "resources/js/app.jsx"
@@ -30,7 +30,7 @@
     ]
   },
   "resources/js/app.jsx": {
-    "file": "assets/app-CAkVE7GP.js",
+    "file": "assets/app-DObsW4-9.js",
     "name": "app",
     "src": "resources/js/app.jsx",
     "isEntry": true,
@@ -49,22 +49,22 @@
     ]
   },
   "resources/js/pages/About.jsx": {
-    "file": "assets/About-CXBQZHz9.js",
+    "file": "assets/About-CKtbqxIi.js",
     "name": "About",
     "src": "resources/js/pages/About.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_CinematicHero-CPQAAmdf.js",
-      "_MainLayout-BeaPPrdX.js",
-      "_CMSText-DmS2kb0z.js"
+      "_CinematicHero-1SixFSlG.js",
+      "_MainLayout-BUwkrpgd.js",
+      "_CMSText-DSS2uQ5I.js"
     ],
     "css": [
       "assets/app-C-Ro-oF6.css"
     ]
   },
   "resources/js/pages/Admin/CMS.jsx": {
-    "file": "assets/CMS-CrCvrQDN.js",
+    "file": "assets/CMS-DjiL3uRf.js",
     "name": "CMS",
     "src": "resources/js/pages/Admin/CMS.jsx",
     "isDynamicEntry": true,
@@ -77,35 +77,35 @@
     ]
   },
   "resources/js/pages/ArticleDetail.jsx": {
-    "file": "assets/ArticleDetail-B_vZ-8ma.js",
+    "file": "assets/ArticleDetail-C-aFjnkp.js",
     "name": "ArticleDetail",
     "src": "resources/js/pages/ArticleDetail.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BeaPPrdX.js"
+      "_MainLayout-BUwkrpgd.js"
     ],
     "css": [
       "assets/app-C-Ro-oF6.css"
     ]
   },
   "resources/js/pages/Articles.jsx": {
-    "file": "assets/Articles-BnBju0At.js",
+    "file": "assets/Articles-CaeKcJO3.js",
     "name": "Articles",
     "src": "resources/js/pages/Articles.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_CinematicHero-CPQAAmdf.js",
-      "_MainLayout-BeaPPrdX.js",
-      "_CMSText-DmS2kb0z.js"
+      "_CinematicHero-1SixFSlG.js",
+      "_MainLayout-BUwkrpgd.js",
+      "_CMSText-DSS2uQ5I.js"
     ],
     "css": [
       "assets/app-C-Ro-oF6.css"
     ]
   },
   "resources/js/pages/Auth/Login.jsx": {
-    "file": "assets/Login-DP09ns2v.js",
+    "file": "assets/Login-7EMxu5U4.js",
     "name": "Login",
     "src": "resources/js/pages/Auth/Login.jsx",
     "isDynamicEntry": true,
@@ -117,42 +117,42 @@
     ]
   },
   "resources/js/pages/Gallery.jsx": {
-    "file": "assets/Gallery-D0LaWCiG.js",
+    "file": "assets/Gallery-NhYvs7qp.js",
     "name": "Gallery",
     "src": "resources/js/pages/Gallery.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BeaPPrdX.js",
-      "_CinematicHero-CPQAAmdf.js",
-      "_CMSText-DmS2kb0z.js"
+      "_MainLayout-BUwkrpgd.js",
+      "_CinematicHero-1SixFSlG.js",
+      "_CMSText-DSS2uQ5I.js"
     ],
     "css": [
       "assets/app-C-Ro-oF6.css"
     ]
   },
   "resources/js/pages/Home.jsx": {
-    "file": "assets/Home-Bw5oRtp5.js",
+    "file": "assets/Home-C9dZzUMg.js",
     "name": "Home",
     "src": "resources/js/pages/Home.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BeaPPrdX.js",
-      "_CMSText-DmS2kb0z.js"
+      "_MainLayout-BUwkrpgd.js",
+      "_CMSText-DSS2uQ5I.js"
     ],
     "css": [
       "assets/app-C-Ro-oF6.css"
     ]
   },
   "resources/js/pages/Team.jsx": {
-    "file": "assets/Team-BL63bLmk.js",
+    "file": "assets/Team-C7pQVf2t.js",
     "name": "Team",
     "src": "resources/js/pages/Team.jsx",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MainLayout-BeaPPrdX.js"
+      "_MainLayout-BUwkrpgd.js"
     ],
     "css": [
       "assets/app-C-Ro-oF6.css"

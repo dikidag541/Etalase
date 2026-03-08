@@ -42,7 +42,7 @@ export default function Home({ cms = {}, divisions = [] }) {
             <div className="fixed inset-0 pointer-events-none gold-leaf-texture opacity-[0.02] z-[998]"></div>
 
             {/* --- HERO SECTION: CINEMATIC MASTERPIECE --- */}
-            <section className="relative min-h-[120vh] bg-surface z-[10] mt-20">
+            <section className="relative min-h-[120vh] bg-surface z-[10]">
                 {/* Top Edge Glow */}
                 <div className="absolute top-0 left-0 w-full h-96 edge-glow-blue opacity-50 z-20 pointer-events-none"></div>
 
@@ -70,7 +70,7 @@ export default function Home({ cms = {}, divisions = [] }) {
                 </div>
 
                 {/* Main Content: Monumental Typography */}
-                <div className="relative z-10 w-full min-h-screen flex flex-col justify-end items-center pb-[4vh]">
+                <div className="relative z-10 w-full min-h-screen flex flex-col justify-end items-center pb-[4vh] mt-24">
                     {/* Layer 0: Banner Text */}
                     {cms.hero_banner_text && (
                         <div className="absolute top-[20%] left-[5vw] z-20 reveal">

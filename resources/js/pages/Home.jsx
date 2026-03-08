@@ -35,7 +35,7 @@ export default function Home({ cms = {}, divisions = [] }) {
 
     return (
         <MainLayout>
-            <Head title="SOVEREIGN | UKM Kesenian Etalase" />
+            <Head title="UKM Kesenian Etalase" />
 
             {/* Artistic Noise & Texture Overlay */}
             <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[999] bg-[url('https://www.transparenttextures.com/patterns/p6.png')]"></div>
@@ -186,7 +186,7 @@ export default function Home({ cms = {}, divisions = [] }) {
                                 className="text-text-muted text-xl md:text-2xl font-light leading-relaxed italic max-w-xl mb-16"
                             >
                                 {cms.manifesto_desc ||
-                                    "Setiap langkah adalah narasi, setiap kostum adalah prasasti. Kita tidak hanya melintas, kita meninggalkan jejak rupa yang abadi."}
+                                    "Setiap langkah adalah narasi, setiap kostum adalah prasasti. Kita tidak hanya melintas, tetapi kita belajar berjalan dalam irama yang selaras."}
                             </CMSText>
 
                             <div className="flex gap-8 md:gap-16">

@@ -134,7 +134,11 @@ function TeamManager({ members }) {
         name: '',
         role: '',
         image: null,
-        order: members.length + 1
+        order: members.length + 1,
+        facebook_url: '',
+        instagram_url: '',
+        tiktok_url: '',
+        youtube_url: ''
     })
 
     const submit = (e) => {
@@ -203,6 +207,55 @@ function TeamManager({ members }) {
                                 {errors.role && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.role}</p>}
                             </div>
                         </div>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="studio-label text-[8px] tracking-widest text-etalase-red">Facebook URL</label>
+                                <input
+                                    type="url"
+                                    value={data.facebook_url}
+                                    onChange={e => setData('facebook_url', e.target.value)}
+                                    className="studio-input"
+                                    placeholder="https://facebook.com/..."
+                                />
+                                {errors.facebook_url && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.facebook_url}</p>}
+                            </div>
+                            <div>
+                                <label className="studio-label text-[8px] tracking-widest text-etalase-red">Instagram URL</label>
+                                <input
+                                    type="url"
+                                    value={data.instagram_url}
+                                    onChange={e => setData('instagram_url', e.target.value)}
+                                    className="studio-input"
+                                    placeholder="https://instagram.com/..."
+                                />
+                                {errors.instagram_url && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.instagram_url}</p>}
+                            </div>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="studio-label text-[8px] tracking-widest text-etalase-red">TikTok URL</label>
+                                <input
+                                    type="url"
+                                    value={data.tiktok_url}
+                                    onChange={e => setData('tiktok_url', e.target.value)}
+                                    className="studio-input"
+                                    placeholder="https://tiktok.com/@..."
+                                />
+                                {errors.tiktok_url && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.tiktok_url}</p>}
+                            </div>
+                            <div>
+                                <label className="studio-label text-[8px] tracking-widest text-etalase-red">YouTube URL</label>
+                                <input
+                                    type="url"
+                                    value={data.youtube_url}
+                                    onChange={e => setData('youtube_url', e.target.value)}
+                                    className="studio-input"
+                                    placeholder="https://youtube.com/..."
+                                />
+                                {errors.youtube_url && <p className="text-red-500 text-[10px] mt-2 uppercase">{errors.youtube_url}</p>}
+                            </div>
+                        </div>
+
                         <div>
                             <label className="studio-label">Portrait Asset</label>
                             <input
@@ -250,7 +303,16 @@ function TeamManager({ members }) {
                             <button
                                 onClick={() => {
                                     setEditing(member);
-                                    setData({ name: member.name, role: member.role, order: member.order, image: null });
+                                    setData({
+                                        name: member.name,
+                                        role: member.role,
+                                        order: member.order,
+                                        image: null,
+                                        facebook_url: member.facebook_url || '',
+                                        instagram_url: member.instagram_url || '',
+                                        tiktok_url: member.tiktok_url || '',
+                                        youtube_url: member.youtube_url || ''
+                                    });
                                     setShowAdd(false);
                                 }}
                                 className="p-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-md transition-all text-text-muted hover:text-black dark:hover:text-white"

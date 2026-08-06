@@ -16,6 +16,10 @@ class TeamMemberController extends Controller
             'role' => 'required|string|max:255',
             'image' => 'required|image|max:10240',
             'order' => 'nullable|integer',
+            'facebook_url' => 'nullable|url|max:255',
+            'instagram_url' => 'nullable|url|max:255',
+            'tiktok_url' => 'nullable|url|max:255',
+            'youtube_url' => 'nullable|url|max:255',
         ]);
 
         if ($request->hasFile('image')) {
@@ -35,6 +39,10 @@ class TeamMemberController extends Controller
             'role' => 'required|string|max:255',
             'image' => 'nullable|image|max:10240',
             'order' => 'nullable|integer',
+            'facebook_url' => 'nullable|url|max:255',
+            'instagram_url' => 'nullable|url|max:255',
+            'tiktok_url' => 'nullable|url|max:255',
+            'youtube_url' => 'nullable|url|max:255',
         ]);
 
         if ($request->hasFile('image')) {

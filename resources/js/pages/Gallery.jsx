@@ -117,17 +117,17 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
             </section>
 
             {/* --- SECTION: THE COLLECTION (GALLERY) --- */}
-            <section className="py-24 md:py-64 lg:py-96 bg-surface relative transition-colors duration-500">
+            <section className="py-24 md:py-64 lg:py-96 bg-surface relative overflow-hidden transition-colors duration-500">
                 {/* Background Typography */}
                 <div
-                    className="absolute top-1/4 right-0 text-[35vw] font-black text-text-main/5 italic leading-none pointer-events-none select-none z-0 uppercase"
+                    className="absolute top-1/4 right-0 text-[35vw] font-black text-text-main/5 italic leading-none pointer-events-none select-none z-0 uppercase overflow-hidden max-w-full"
                     style={{ transform: `translateX(${scrollY * 0.1}px)` }}
                 >
                     COLLECTION
                 </div>
 
                 <div className="container mx-auto px-6 sm:px-12 lg:px-24 relative z-10">
-                    <div className="text-center mb-48 reveal">
+                    <div className="text-center mb-16 md:mb-32 lg:mb-48 reveal">
                         <CMSText className="text-gold-500 text-[10px] tracking-[2em] uppercase font-black block mb-8">
                             {cms.gallery_archive_badge || "MASTERPIECES"}
                         </CMSText>
@@ -136,7 +136,7 @@ export default function Gallery({ cms = {}, initialItems = [] }) {
                         </CMSText>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-48">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 md:gap-x-24 gap-y-16 md:gap-y-32 lg:gap-y-48">
                         {museumCollection.map((item, i) => (
                             <MuseumItem key={i} item={item} i={i} scrollY={scrollY} />
                         ))}
@@ -205,12 +205,20 @@ function MuseumItem({ item, i, scrollY }) {
         setCardMousePos({ x, y });
     };
 
-    const yOffset = (i % 2 === 0) ? -scrollY * 0.05 : scrollY * 0.05;
+    const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const isMobile = windowWidth < 768;
+    const yOffset = isMobile ? 0 : (i % 2 === 0) ? -scrollY * 0.05 : scrollY * 0.05;
 
     return (
         <div
             className={`reveal ${i % 2 !== 0 ? 'md:mt-48' : ''}`}
-            style={{ transform: `translateY(${yOffset}px)` }}
+            style={yOffset !== 0 ? { transform: `translateY(${yOffset}px)` } : {}}
             onMouseEnter={() => setIsHovered(true)}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => {
@@ -253,8 +261,8 @@ function MuseumItem({ item, i, scrollY }) {
                 </div>
 
                 {/* Floating Decoration */}
-                <div className="absolute -top-8 -right-8 w-16 h-16 border-t-2 border-r-2 border-gold-500 group-hover:scale-125 transition-transform duration-700"></div>
-                <div className="absolute -bottom-8 -left-8 w-16 h-16 border-b-2 border-l-2 border-border-main group-hover:scale-125 transition-transform duration-700"></div>
+                <div className="hidden md:block absolute -top-8 -right-8 w-16 h-16 border-t-2 border-r-2 border-gold-500 group-hover:scale-125 transition-transform duration-700"></div>
+                <div className="hidden md:block absolute -bottom-8 -left-8 w-16 h-16 border-b-2 border-l-2 border-border-main group-hover:scale-125 transition-transform duration-700"></div>
             </div>
         </div>
     );
